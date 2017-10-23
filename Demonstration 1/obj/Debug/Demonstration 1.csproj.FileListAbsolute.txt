@@ -1,0 +1,3 @@
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\CuraDemonstration.exe.config
+R:\Programming\Cura Profile Example\Template\bin\Debug\CuraDemonstration.exe.config
+C:\Temp\GitHub Temp\Cura Profile Example\2017\Demonstration 1\bin\Debug\CuraDemonstration.exe.config

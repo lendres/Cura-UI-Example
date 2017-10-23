@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Options</title>
+	<script type="text/javascript" src="Common Header.js"></script>
+	<script type="text/javascript" src="wz_jsgraphics.js"></script>
+	<script type="text/javascript" src="annotation.js"></script>
+</head>
+
+<body>
+	<script type="text/javascript">CreateHeader("Options")</script>
+
+	<h1>Form</h1>
+	<p>
+		The image below shows the options form.  Refer to the table below for information about the controls.
+	</p>
+    <div id="options" class="labeled-image">
+		<img src="Images/options.png" alt="GUI." class="labeled"/>
+    </div>
+	    <script type="text/javascript">
+	    	var cnv	= document.getElementById("options");
+	    	var jg	= new jsGraphics(cnv);
+
+	    	var annot = new Annotator(jg);
+	    	annot.FontSize(12);
+	    	annot.ArrowSize(10);
+	    	annot.XLabelPosition(430);
+	    	annot.InitializeGraphics();
+
+	    	var y = 50;
+	    	annot.DrawHorLabel("Input Map", 400, y);
+	    	y = y + 24;
+	    	annot.DrawHorLabel("Sort Wells", 270, y);
+	    	y = y + 26;
+	    	annot.DrawHorLabel("Recent Files Menu", 270, y);
+	    	y = y + 24;
+	    	annot.DrawHorLabel("Default Text", 270, y);
+	    	y = y + 24;
+	    	annot.DrawHorLabel("Advanced Selection", 270, y);
+
+	    	jg.paint();
+	</script>
+	
+	<table id="controls">
+		
+		<tr class="header">
+			<th>Column</th>
+			<th>Description</th>
+		</tr>
+		
+		<tr>
+			<td>Input Map</td>
+			<td>
+				Controls for specifying the file used to map the columns of input files to internal values.  The location of the file is specified here.  The
+				file must be edited manually.
+			</td>
+		</tr>
+
+		<tr>
+			<td>Sort Wells</td>
+			<td>
+				Specifies if the wells should be ordered.  If this box is checked, when a new well is inserted into the project, the wells will be sorted
+				alphabetically, by name.  If this box is not checked, the wells are ordered in the project in the same order that they were added to the
+				project.
+			</td>
+		</tr>
+
+		<tr>
+			<td>Recent Files Menu</td>
+			<td>
+				Sets the number of files shown in the  <span class="gui-component-name">Recent Files Menu</span>.
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Default Text</td>
+			<td>
+				The text that is filled in the <span class="gui-component-name">Well Comparison Table</span> for Void Well Segments (no data available or outside of the starting and ending depths). See
+				<a href="Starting and Ending Depths.htm">Project Starting and Ending Depths</a> and <a href="Project Segmentation.htm">Project Segmentation</a> for
+				more information about what Void Well Segments are and when they occur.  See the section <a href="#defaulttextexample">Default Text Example</a> for
+				an example of how text entered in this box effects the <span class="gui-component-name">Well Comparison Table</span>.
+			</td>
+		</tr>
+		
+		<tr>
+			<td>Advanced Selection</td>
+			<td>
+				Controls how items are selected in list boxes.  If checked, then the <em>shift</em> and <em>control</em> keys can be used to select consecutive
+				files and individual files, respectively.  This is similar to how Windows' File Explorer works.  If unchecked, each item must be clicked independently.
+				To de-select them, click them again.
+			</td>
+		</tr>
+    </table>
+
+	<h2 id="defaulttextexample">Default Text Example</h2>
+	<div id="optionsdefaulttextblankexample" class="centered-image">
+		<img src="Images/optionsdefaulttextblank.png" alt="Options form with default text for Well Comparison Table blank." class="options-side-by-side"/>
+		<img src="Images/wellcomparisontabledefaulttextblank.png" alt="Well Comparison Table with entries for Void Well Segments having blank text." class="comparison-table-side-by-side"/>
+		<p class="caption">Default text for Well Comparison Table is blank.</p>
+    </div>
+
+	<div id="optionsdefaulttextnaexample" class="centered-image">
+		<img src="Images/optionsdefaulttextna.png" alt="Options form with default text for Well Comparison Table blank." class="options-side-by-side"/>
+		<img src="Images/wellcomparisontabledefaulttextna.png" alt="Well Comparison Table with entries for Void Well Segments having blank text." class="comparison-table-side-by-side"/>
+		<p class="caption">Default text for Well Comparison Table contains the text "N/A."</p>
+    </div>
+
+</body>
+</html>

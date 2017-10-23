@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Command Line Arguments</title>
+	<script type="text/javascript" src="Common Header.js"></script>
+</head>
+
+<body>
+	<script type="text/javascript">CreateHeader("Command Line Arguments")</script>
+
+    <h1>Introduction</h1>
+    
+    <p>
+        SurePath allows some input to be specified as command line options.  The user may use any number or combination of the
+        options (or switches) to produce the desired effect.
+    </p>
+    
+    <h2>Spaces</h2>
+    
+	If the arguments to the switches contain spaces, the argument must be enclosed within quotation marks.  For example, paths often
+	contains spaces.  As a best practice, always contain paths or other arguments which could potentially contain spaces within 
+	double quotes (").  For example, <span class="argument">-project</span> <span class="file-name">"C:\Project 1.stproj"</span>.
+
+    <h2>Switches with Single Arguments and Switches with Multiple Arguments</h2>
+    <p>
+		Some command line switches are a single input argument and some require multiple arguments.  Binary options (an option is either activated
+		or it is not) have only a single input argument.  Other switches, such as those providing a file to load, will require an additional input
+		argument which follows the switch.
+    </p>
+    
+    <h2>Available Switches</h2>
+
+    <dl class="argument-list">
+        <dt>-project <span class="option">arg</span></dt>
+        <dd>
+            Specifies that the project file <span class="argument-option">arg</span> should be used.  The name of the input file must include the full path, 
+            file name, and extension.
+        </dd>
+
+          <dt>-install</dt>
+        <dd>
+			Specifies that, on start up, the SurePath should initialize certain registry entries.  Existing entries are overwritten.  This is mainly used for testing
+			and should not be used by a normal user of the software.
+        </dd>
+        <dd>
+			<span class="warning">
+				Warning: This command should only be used by an expert who has the proper knowledge of the consequences that result from using this feature.
+			</span>
+        </dd>
+    </dl>
+
+</body>
+</html>

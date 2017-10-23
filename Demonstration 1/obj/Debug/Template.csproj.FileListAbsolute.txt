@@ -1,0 +1,20 @@
+C:\Projects\TemplateSolution\Template\bin\Debug\Template.exe.config
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\Template.exe.config
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\Template.csprojResolveAssemblyReference.cache
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\ProfileDemo.DialogBoxForm.resources
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\ProfileDemo.Demostration.resources
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\ProfileDemo.OptionsForm.resources
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\Template.Properties.Resources.resources
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\Template.csproj.GenerateResource.Cache
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\Icon.ico
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\Help\Help.chm
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\Template.exe
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\Template.pdb
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\C5.dll
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\CbtHook.dll
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\DPM.dll
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\Plossum CommandLine.dll
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\WindowsHook.dll
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\bin\Debug\XInclude.dll
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\Template.exe
+R:\Storage\Previous Work\APS\Cura Profile Example\Template\obj\Debug\Template.pdb
