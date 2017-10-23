@@ -83,10 +83,11 @@
     <Compile Include="Forms\OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profile\Property.cs" />
-    <Compile Include="Profile\PropertyGroup.cs" />
-    <Compile Include="Profile\ProfileGroup.cs" />
-    <Compile Include="Profile\Profile.cs" />
+    <Compile Include="Materials\MaterialGroup.cs" />
+    <Compile Include="Profiles\Property.cs" />
+    <Compile Include="Profiles\PropertyGroup.cs" />
+    <Compile Include="Profiles\ProfileGroup.cs" />
+    <Compile Include="Profiles\Profile.cs" />
     <Compile Include="Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\DialogBoxForm.resx">

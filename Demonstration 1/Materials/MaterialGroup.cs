@@ -9,7 +9,7 @@ namespace ProfileDemo
 	/// <summary>
 	/// Container for Profiles.
 	/// </summary>
-	public class ProfileGroup
+	public class MaterialGroup
 	{
 		#region Members / Variables / Delegates
 
@@ -23,7 +23,7 @@ namespace ProfileDemo
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public ProfileGroup() {}
+		public MaterialGroup() {}
 
 		#endregion
 
@@ -61,11 +61,11 @@ namespace ProfileDemo
 		/// </summary>
 		/// <param name="path">The file to read from.</param>
 		/// <returns>The deserialized file types.</returns>
-		private static ProfileGroup Deserialize(string path)
+		private static MaterialGroup Deserialize(string path)
 		{
-			ProfileGroup profileGroup			= Serialization.DeserializeObject<ProfileGroup>(path);
-            profileGroup._path                  = path;
-			return profileGroup;
+            MaterialGroup group			= Serialization.DeserializeObject<MaterialGroup>(path);
+            group._path                  = path;
+			return group;
 		}
 
 		/// <summary>
