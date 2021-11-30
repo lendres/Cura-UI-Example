@@ -3,13 +3,9 @@ using System.Xml.Serialization;
 
 namespace ProfileDemo.Materials
 {
-	class Material
+	class Material : PropertyGroup
 	{
 		#region Members
-
-		private double				_temperature;
-		private double				_coolDownModifier;
-		private double				_flow;
 
 
 		#endregion
@@ -21,61 +17,9 @@ namespace ProfileDemo.Materials
 		/// </summary>
 		public Material()
 		{
-		}
-
-		#endregion
-
-		#region Properties
-
-		/// <summary>
-		/// Primary printing temperature in Celcius.
-		/// </summary>
-		[XmlAttribute("datamode")]
-		public double Temperature
-		{
-			get
-			{
-				return _temperature;
-			}
-
-			set
-			{
-				_temperature = value;
-			}
-		}
-
-		/// <summary>
-		/// Cool down modifier in degrees Celcius per second.
-		/// </summary>
-		[XmlAttribute("cooldownmodifier")]
-		public double CoolDownModifier
-		{
-			get
-			{
-				return _coolDownModifier;
-			}
-
-			set
-			{
-				_coolDownModifier = value;
-			}
-		}
-
-		/// <summary>
-		/// Flow rate as a percent (0 = 100).
-		/// </summary>
-		[XmlAttribute("flow")]
-		public double Flow
-		{
-			get
-			{
-				return _flow;
-			}
-
-			set
-			{
-				_flow = value;
-			}
+			AddProperty("Temperature", 200);
+			AddProperty("Cool Down Modifier", 2);
+			AddProperty("Flow Rate", 100);
 		}
 
 		#endregion

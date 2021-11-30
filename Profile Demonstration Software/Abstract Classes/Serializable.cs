@@ -8,7 +8,7 @@ namespace ProfileDemo
 	/// <summary>
 	/// 
 	/// </summary>
-	public class Serializable
+	public abstract class Serializable : UniqueId
 	{
 		#region Members
 

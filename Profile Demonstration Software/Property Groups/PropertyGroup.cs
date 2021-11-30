@@ -8,7 +8,7 @@ namespace ProfileDemo
 	/// <summary>
 	/// 
 	/// </summary>
-	public class PropertyGroup
+	public class PropertyGroup : Serializable
 	{
 		#region Members
 
@@ -43,6 +43,16 @@ namespace ProfileDemo
 		#endregion
 
 		#region Functions
+
+		/// <summary>
+		/// Create a new property.
+		/// </summary>
+		/// <param name="name">Property name.</param>
+		/// <param name="value">Property value.</param>
+		public void AddProperty(string name, double value)
+		{
+			_properties.Add(name, new Property());
+		}
 
 		/// <summary>
 		/// Get a property by its index.

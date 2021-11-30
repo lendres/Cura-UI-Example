@@ -91,13 +91,14 @@
     </Compile>
     <Compile Include="Materials\Material.cs" />
     <Compile Include="Materials\MaterialGroup.cs" />
-    <Compile Include="Profiles\Property.cs" />
-    <Compile Include="Profiles\PropertyGroup.cs" />
+    <Compile Include="Property Groups\Property.cs" />
+    <Compile Include="Property Groups\PropertyGroup.cs" />
     <Compile Include="Profiles\ProfileGroup.cs" />
     <Compile Include="Profiles\Profile.cs" />
-    <Compile Include="Profiles\Serializable.cs" />
+    <Compile Include="Abstract Classes\Serializable.cs" />
     <Compile Include="Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Abstract Classes\UniequeId.cs" />
     <EmbeddedResource Include="Forms\DialogBoxForm.resx">
       <DependentUpon>DialogBoxForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,13 +121,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="Help\Help.chm">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Help\Help.chw" />
-    <None Include="Help\Help.hhc" />
-    <None Include="Help\Help.hhk" />
-    <None Include="Help\Help.hhp" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,33 +135,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Help\About Help.htm" />
-    <Content Include="Help\About Software.htm" />
-    <Content Include="Help\annotation.js" />
-    <Content Include="Help\Command Line Arguments.htm" />
-    <Content Include="Help\Common Header.js" />
-    <Content Include="Help\Common.css" />
-    <Content Include="Help\Creating a Project.htm" />
-    <Content Include="Help\Glossary.htm" />
-    <Content Include="Help\Images\aps-logo-2.png" />
-    <Content Include="Help\Images\aps-logo-blank.png" />
-    <Content Include="Help\Images\Icon.ico" />
-    <Content Include="Help\Main Form.htm" />
-    <Content Include="Help\matrix.js" />
-    <Content Include="Help\Options.htm" />
-    <Content Include="Help\Popup Topics.js" />
-    <Content Include="Help\popup.js" />
-    <Content Include="Help\Projects.htm" />
-    <Content Include="Help\Software Specific.css" />
-    <Content Include="Help\Template.htm" />
-    <Content Include="Help\wz_jsgraphics.js" />
     <Content Include="Icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Help\Example\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

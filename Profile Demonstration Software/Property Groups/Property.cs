@@ -18,10 +18,25 @@ namespace ProfileDemo
 
 		/// <summary>
 		/// Default constructor.
+		/// 
+		/// Required for serialization.
 		/// </summary>
         public Property()
 		{
 		}
+
+
+		/// <summary>
+		/// Default constructor.
+		/// 
+		/// Required for serialization.
+		/// </summary>
+        public Property(string name, double value)
+		{
+			_name = name;
+			_value = value;
+		}
+		
 
         #endregion
 
