@@ -36,16 +36,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="C5">
-      <HintPath>..\References\C5.dll</HintPath>
+      <HintPath>.\References\C5.dll</HintPath>
     </Reference>
     <Reference Include="CbtHook">
-      <HintPath>..\References\CbtHook.dll</HintPath>
+      <HintPath>.\References\CbtHook.dll</HintPath>
     </Reference>
     <Reference Include="DPM">
-      <HintPath>..\References\DPM.dll</HintPath>
+      <HintPath>.\References\DPM.dll</HintPath>
     </Reference>
     <Reference Include="Plossum CommandLine">
-      <HintPath>..\References\Plossum CommandLine.dll</HintPath>
+      <HintPath>.\References\Plossum CommandLine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,10 +58,10 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsHook">
-      <HintPath>..\References\WindowsHook.dll</HintPath>
+      <HintPath>.\References\WindowsHook.dll</HintPath>
     </Reference>
     <Reference Include="XInclude">
-      <HintPath>..\References\XInclude.dll</HintPath>
+      <HintPath>.\References\XInclude.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -71,11 +71,11 @@
     <Compile Include="Forms\DialogBoxForm.Designer.cs">
       <DependentUpon>DialogBoxForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Demonstration.cs">
+    <Compile Include="Forms\DemonstrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Demonstration.Designer.cs">
-      <DependentUpon>Demonstration.cs</DependentUpon>
+    <Compile Include="Forms\DemonstrationForm.Designer.cs">
+      <DependentUpon>DemonstrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\OptionsForm.cs">
       <SubType>Form</SubType>
@@ -83,21 +83,32 @@
     <Compile Include="Forms\OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PropertyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\PropertyControl.Designer.cs">
+      <DependentUpon>PropertyControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Materials\Material.cs" />
     <Compile Include="Materials\MaterialGroup.cs" />
     <Compile Include="Profiles\Property.cs" />
     <Compile Include="Profiles\PropertyGroup.cs" />
     <Compile Include="Profiles\ProfileGroup.cs" />
     <Compile Include="Profiles\Profile.cs" />
+    <Compile Include="Profiles\Serializable.cs" />
     <Compile Include="Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\DialogBoxForm.resx">
       <DependentUpon>DialogBoxForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Demonstration.resx">
-      <DependentUpon>Demonstration.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DemonstrationForm.resx">
+      <DependentUpon>DemonstrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OptionsForm.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PropertyControl.resx">
+      <DependentUpon>PropertyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

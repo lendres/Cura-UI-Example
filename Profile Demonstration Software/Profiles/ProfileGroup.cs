@@ -11,7 +11,7 @@ namespace ProfileDemo
 	/// </summary>
 	public class ProfileGroup
 	{
-		#region Members / Variables / Delegates
+		#region Members
 
         private List<Profile>           _profiles           = new List<Profile>();
         private string                  _path;
@@ -23,7 +23,9 @@ namespace ProfileDemo
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public ProfileGroup() {}
+		public ProfileGroup()
+		{
+		}
 
 		#endregion
 
@@ -56,7 +58,7 @@ namespace ProfileDemo
 
 		#region XML
 
-        		/// <summary>
+        /// <summary>
 		/// Create an instance from a file.
 		/// </summary>
 		/// <param name="path">The file to read from.</param>

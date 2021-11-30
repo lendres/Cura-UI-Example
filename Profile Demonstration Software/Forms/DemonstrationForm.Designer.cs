@@ -39,6 +39,7 @@
 			this.toolStripFile = new System.Windows.Forms.ToolStrip();
 			this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
 			this.statusBar = new System.Windows.Forms.StatusBar();
 			this.statusBarPanelStatus = new System.Windows.Forms.StatusBarPanel();
 			this.statusBarPanelBlank = new System.Windows.Forms.StatusBarPanel();
@@ -49,6 +50,7 @@
 			this.toolStripMenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparatorFile1 = new System.Windows.Forms.ToolStripSeparator();
+			this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemSaveAs = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuFileExport = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparatorFile2 = new System.Windows.Forms.ToolStripSeparator();
@@ -61,8 +63,6 @@
 			this.toolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemViewHelp = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
 			this.toolStripContainer1.SuspendLayout();
 			this.toolStripFile.SuspendLayout();
@@ -159,6 +159,16 @@
 			this.toolStripButtonOpen.Text = "&Open...";
 			this.toolStripButtonOpen.ToolTipText = "Open Project (Ctrl+O)";
 			// 
+			// toolStripButtonSave
+			// 
+			this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripButtonSave.Enabled = false;
+			this.toolStripButtonSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSave.Image")));
+			this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButtonSave.Name = "toolStripButtonSave";
+			this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
+			this.toolStripButtonSave.Text = "&Save";
+			// 
 			// statusBar
 			// 
 			this.statusBar.Location = new System.Drawing.Point(0, 359);
@@ -249,6 +259,14 @@
 			this.toolStripSeparatorFile1.Name = "toolStripSeparatorFile1";
 			this.toolStripSeparatorFile1.Size = new System.Drawing.Size(152, 6);
 			// 
+			// toolStripMenuItemSave
+			// 
+			this.toolStripMenuItemSave.Enabled = false;
+			this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
+			this.toolStripMenuItemSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+			this.toolStripMenuItemSave.Size = new System.Drawing.Size(155, 22);
+			this.toolStripMenuItemSave.Text = "&Save";
+			// 
 			// toolStripMenuItemSaveAs
 			// 
 			this.toolStripMenuItemSaveAs.Name = "toolStripMenuItemSaveAs";
@@ -296,7 +314,7 @@
 			this.toolStripMenuItemTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemOptions});
 			this.toolStripMenuItemTools.Name = "toolStripMenuItemTools";
-			this.toolStripMenuItemTools.Size = new System.Drawing.Size(48, 20);
+			this.toolStripMenuItemTools.Size = new System.Drawing.Size(46, 20);
 			this.toolStripMenuItemTools.Text = "&Tools";
 			// 
 			// toolStripMenuItemOptions
@@ -331,25 +349,7 @@
 			this.toolStripMenuItemAbout.Text = "&About";
 			this.toolStripMenuItemAbout.Click += new System.EventHandler(this.toolStripMenuItemHelpAbout_Click);
 			// 
-			// toolStripButtonSave
-			// 
-			this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButtonSave.Enabled = false;
-			this.toolStripButtonSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSave.Image")));
-			this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButtonSave.Name = "toolStripButtonSave";
-			this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
-			this.toolStripButtonSave.Text = "&Save";
-			// 
-			// toolStripMenuItemSave
-			// 
-			this.toolStripMenuItemSave.Enabled = false;
-			this.toolStripMenuItemSave.Name = "toolStripMenuItemSave";
-			this.toolStripMenuItemSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.toolStripMenuItemSave.Size = new System.Drawing.Size(155, 22);
-			this.toolStripMenuItemSave.Text = "&Save";
-			// 
-			// Form1
+			// Demostration
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -358,8 +358,8 @@
 			this.Controls.Add(this.menuStripMain);
 			this.Controls.Add(this.statusBar);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Name = "Demostration";
+			this.Text = "Cura Profile Demonstration Software";
 			this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
 			this.toolStripContainer1.TopToolStripPanel.PerformLayout();
 			this.toolStripContainer1.ResumeLayout(false);
