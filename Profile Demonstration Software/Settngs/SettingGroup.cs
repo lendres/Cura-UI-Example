@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using DigitalProduction.XML.Serialization;
 
 namespace CuraProfileDemonstration
 {
@@ -12,8 +13,7 @@ namespace CuraProfileDemonstration
 	{
 		#region Members
 
-		private string									_name;
-		private Dictionary<string, Setting>				_properties				= new Dictionary<string, Setting>();
+		private Dictionary<string, Setting>				_settings				= new Dictionary<string, Setting>();
 
 		#endregion
 
@@ -31,23 +31,36 @@ namespace CuraProfileDemonstration
 		#region Properties
 
 		/// <summary>
-		/// Name or title of this setting group.
-		/// </summary>
-		[XmlAttribute("name")]
-		public string Name
-		{
-			get => _name;
-			set => _name = value;
-		}
-
-		/// <summary>
 		/// Dictionary that contains the properties.
 		/// </summary>
+		//[XmlArray("properties"), XmlArrayItem("property")]
+		//public SerializableDictionary<string, Setting> Properties
+		//{
+		//	get => _properties;
+		//	set => _properties = value;
+		//}
+
 		[XmlArray("properties"), XmlArrayItem("property")]
-		public Dictionary<string, Setting> Properties
+		public SerializableKeyValuePair<string, Setting>[] Properties
 		{
-			get => _properties;
-			set => _properties=value;
+			get
+			{
+				List<SerializableKeyValuePair<string, Setting>> list = new List<SerializableKeyValuePair<string, Setting>>();
+				if (_settings != null)
+				{
+					list.AddRange(_settings.Keys.Select(key => new SerializableKeyValuePair<string, Setting>() {Key = key, Value = _settings[key]}));
+				}
+				return list.ToArray();
+			}
+
+			set
+			{
+				_settings = new Dictionary<string, Setting>();
+				foreach (SerializableKeyValuePair<string, Setting> item in value)
+				{
+					_settings.Add(item.Key, item.Value);
+				}
+			}
 		}
 
 		#endregion
@@ -61,7 +74,7 @@ namespace CuraProfileDemonstration
 		/// <param name="value">Property value.</param>
 		public void AddProperty(string name, double value)
 		{
-			_properties.Add(name, new Setting());
+			_settings.Add(name, new Setting(name));
 		}
 
 		/// <summary>
@@ -72,7 +85,7 @@ namespace CuraProfileDemonstration
 		/// <param name="index">Index of the Property to return.</param>
 		public Setting GetProperty(int index)
 		{
-			return _properties.Values.ElementAt(index);
+			return _settings.Values.ElementAt(index);
 		}
 
 		#endregion

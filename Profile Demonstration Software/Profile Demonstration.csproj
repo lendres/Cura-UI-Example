@@ -83,14 +83,13 @@
     <Compile Include="Forms and Program\OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms and Program\PropertyControl.cs">
+    <Compile Include="Forms and Program\SettingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms and Program\PropertyControl.Designer.cs">
-      <DependentUpon>PropertyControl.cs</DependentUpon>
+    <Compile Include="Forms and Program\SettingControl.Designer.cs">
+      <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Materials\Material.cs" />
-    <Compile Include="Materials\MaterialGroup.cs" />
     <Compile Include="Profiles\Manager.cs" />
     <Compile Include="Settngs\Setting.cs" />
     <Compile Include="Settngs\SettingGroup.cs" />
@@ -110,8 +109,8 @@
     <EmbeddedResource Include="Forms and Program\OptionsForm.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms and Program\PropertyControl.resx">
-      <DependentUpon>PropertyControl.cs</DependentUpon>
+    <EmbeddedResource Include="Forms and Program\SettingControl.resx">
+      <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

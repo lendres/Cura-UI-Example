@@ -1,6 +1,6 @@
 ﻿namespace CuraProfileDemonstration
 {
-	partial class PropertyControl
+	partial class SettingControl
 	{
 		#region Members
 

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CuraProfileDemonstration
 {
-	public partial class PropertyControl : UserControl
+	public partial class SettingControl : UserControl
 	{
 		#region Members
 
@@ -23,7 +23,7 @@ namespace CuraProfileDemonstration
 
 		#region Construction
 
-		public PropertyControl()
+		public SettingControl()
 		{
 			InitializeComponent();
 		}

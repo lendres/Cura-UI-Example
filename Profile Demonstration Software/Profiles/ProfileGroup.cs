@@ -34,7 +34,7 @@ namespace CuraProfileDemonstration
         /// <summary>
 		/// Profiles.
 		/// </summary>
-		[XmlArray("fields"), XmlArrayItem("field")]
+		[XmlArray("profiles"), XmlArrayItem("profile")]
 		public List<Profile> Profiles
 		{
 			get

@@ -12,6 +12,8 @@ namespace CuraProfileDemonstration
 	{
 		#region Members
 
+		public static string				FileExtension			= ".profile";
+
 		private	List<Material>				_materialOverrides		= new List<Material>();
 		private List<Guid>					_materialIds			= new List<Guid>();
 
@@ -52,7 +54,13 @@ namespace CuraProfileDemonstration
 
 		#region Methods
 
-
+		/// <summary>
+		/// File extension for serialization.
+		/// </summary>
+		public override string GetFileExtension()
+		{
+			return Profile.FileExtension;
+		}
 
 		#endregion
 

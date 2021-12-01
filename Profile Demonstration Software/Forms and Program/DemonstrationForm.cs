@@ -20,6 +20,9 @@ namespace CuraProfileDemonstration
 	{
 		#region Members
 
+
+		private Manager				_manager				= new Manager();
+
 		#endregion
 
 		#region Construction
@@ -30,6 +33,8 @@ namespace CuraProfileDemonstration
 		public Demostration()
 		{
 			InitializeComponent();
+
+			//_manager.ReadLibraries()
 		}
 
 		#endregion
@@ -159,6 +164,14 @@ namespace CuraProfileDemonstration
 		}
 
 		#endregion
+
+		private void writeDefaultLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// Get a new Project file path.  If no file is selected an empty string is return.
+			//string path = DirectorySelect.SelectDirectory("Select Library Location", true, DigitalProduction.Reflection.Assembly.Path());
+
+			//_manager.CreateInitialLibrary(path);
+		}
 
 	} // End class.
 } // End namespace.

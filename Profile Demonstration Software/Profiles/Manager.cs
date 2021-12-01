@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using System.IO;
 
-namespace CuraProfileDemonstration.Profiles
+namespace CuraProfileDemonstration
 {
 	/// <summary>
 	/// 
@@ -27,7 +28,9 @@ namespace CuraProfileDemonstration.Profiles
 
 		#region Members
 
-		private SettingGroupCollection<Material>				_materials				= new SettingGroupCollection<Material>();
+		private static string								_libraryPath;
+
+		private SettingGroupCollection<Material>			_materials				= new SettingGroupCollection<Material>();
 
 		#endregion
 
@@ -38,6 +41,14 @@ namespace CuraProfileDemonstration.Profiles
 		/// </summary>
 		public Manager()
 		{
+			_libraryPath =  Path.Combine(DigitalProduction.Reflection.Assembly.Path(), "Libraries\\");
+			if (!Directory.Exists(_libraryPath))
+			{
+				Directory.CreateDirectory(_libraryPath);
+				CreateInitialLibrary();
+			}
+
+			ReadLibraries();
 		}
 
 		#endregion
@@ -47,6 +58,11 @@ namespace CuraProfileDemonstration.Profiles
 		#endregion
 
 		#region Methods
+
+		public void ReadLibraries()
+		{
+			_materials = SettingGroupCollection<Material>.Deserialize(_libraryPath, Material.FileExtension);
+		}
 
 		/// <summary>
 		/// This function is only to be used to write an initial set of library files.  It should be used
@@ -59,6 +75,8 @@ namespace CuraProfileDemonstration.Profiles
 			_materials.Add(new Material("Breakaway"));
 			_materials.Add(new Material("PVA"));
 			_materials.Add(new Material("PETG"));
+
+			_materials.Serialize(_libraryPath);
 		}
 
 		#endregion

@@ -7,6 +7,7 @@ namespace CuraProfileDemonstration
 	{
 		#region Members
 
+		public static string		FileExtension		= ".material";
 
 		#endregion
 
@@ -35,16 +36,19 @@ namespace CuraProfileDemonstration
 
 		#endregion
 
-		#region XML
+		#region Properties
 
 		/// <summary>
-		/// Create an instance from a file.
+		/// File extension for serialization.
 		/// </summary>
-		/// <param name="path">The file to read from.</param>
-		protected static Material Deserialize(string path)
+		public override string GetFileExtension()
 		{
-			return Deserialize<Material>(path);
+			return Material.FileExtension;
 		}
+
+		#endregion
+
+		#region XML
 
 		#endregion
 
