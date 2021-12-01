@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Plossum.CommandLine;
 using DigitalProduction.Forms;
 
-namespace ProfileDemo
+namespace CuraProfileDemonstration
 {
 	/// <summary>
 	/// Main window.
@@ -40,8 +40,8 @@ namespace ProfileDemo
 		/// Clock ticking event.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		private void timerClock_Tick(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		private void timerClock_Tick(object sender, EventArgs eventArgs)
 		{
 			this.statusBarPanelClock.Text = System.DateTime.Now.ToLongTimeString();
 		}
@@ -50,10 +50,10 @@ namespace ProfileDemo
 		/// Key up event handler.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		private void Form1_KeyUp(object sender, KeyEventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		private void Form1_KeyUp(object sender, KeyEventArgs eventArgs)
 		{
-			switch (e.KeyCode)
+			switch (eventArgs.KeyCode)
 			{
 				case Keys.F5:
 				{
@@ -72,8 +72,8 @@ namespace ProfileDemo
 		/// "New" menu item click handler.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		protected void toolStripMenuItemFileNew_Click(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		protected void toolStripMenuItemFileNew_Click(object sender, EventArgs eventArgs)
 		{
 			//New();
 		}
@@ -82,8 +82,8 @@ namespace ProfileDemo
 		/// "Open" menu item click handler.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		protected void toolStripMenuItemFileOpen_Click(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		protected void toolStripMenuItemFileOpen_Click(object sender, EventArgs eventArgs)
 		{
 			//BrowseAndOpen();
 		}
@@ -92,8 +92,8 @@ namespace ProfileDemo
 		/// "Close" menu item click handler.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		protected void toolStripMenuItemFileClose_Click(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		protected void toolStripMenuItemFileClose_Click(object sender, EventArgs eventArgs)
 		{
 			//CloseProject();
 		}
@@ -102,8 +102,8 @@ namespace ProfileDemo
 		/// "Save" menu item click handler.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		protected void toolStripMenuItemFileSave_Click(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		protected void toolStripMenuItemFileSave_Click(object sender, EventArgs eventArgs)
 		{
 			//Save();
 		}
@@ -112,8 +112,8 @@ namespace ProfileDemo
 		/// "Save As" menu item click handler.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		protected void toolStripMenuItemFileSaveAs_Click(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		protected void toolStripMenuItemFileSaveAs_Click(object sender, EventArgs eventArgs)
 		{
 			//SaveAs();
 		}
@@ -122,8 +122,8 @@ namespace ProfileDemo
 		/// Close the form.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		private void toolStripMenuItemExit_Click(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		private void toolStripMenuItemExit_Click(object sender, EventArgs eventArgs)
 		{
 			Close();
 		}
@@ -141,8 +141,8 @@ namespace ProfileDemo
 		/// Show the options.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		private void toolStripMenuItemOptions_Click(object sender, EventArgs e)
+		/// <param name="eventArgs">Event arguments.</param>
+		private void toolStripMenuItemOptions_Click(object sender, EventArgs eventArgs)
 		{
 			OptionsForm options = new OptionsForm();
 			DialogResult result = options.ShowDialog(this);
@@ -156,32 +156,6 @@ namespace ProfileDemo
 ////					_project.UpdateAfterOptionsChanged();
 //                }
 			}
-		}
-
-		#endregion
-
-		#region Help Menu Event Handlers
-
-		/// <summary>
-		/// Shows the help file.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		private void toolStripMenuItemHelpHelp_Click(object sender, EventArgs e)
-		{
-			string file = System.IO.Path.Combine(DigitalProduction.Reflection.Assembly.LibraryPath, @"Help\Help.chm");
-			Help.ShowHelp(this, file);
-		}
-
-		/// <summary>
-		/// Shows the About dialog box.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		private void toolStripMenuItemHelpAbout_Click(object sender, EventArgs e)
-		{
-			AboutForm1 about = new AboutForm1("lendres@aps-tech.com", "ProfileDemo.Forms.About.bmp");
-			about.ShowDialog(this);
 		}
 
 		#endregion

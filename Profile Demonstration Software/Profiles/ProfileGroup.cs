@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using DigitalProduction.XML.Serialization;
 
-namespace ProfileDemo
+namespace CuraProfileDemonstration
 {
 
 	/// <summary>
@@ -50,7 +50,7 @@ namespace ProfileDemo
 
 		#endregion
 
-		#region Functions
+		#region Methods
 
 
 

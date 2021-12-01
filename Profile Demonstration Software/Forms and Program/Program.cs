@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProfileDemo
+namespace CuraProfileDemonstration
 {
 	/// <summary>
 	/// Main entry point and other single instance (static) members which are program wide.  For example, the registry access.

@@ -1,16 +1,20 @@
 using System;
 
-namespace ProfileDemo
+namespace CuraProfileDemonstration
 {
 	/// <summary>
 	/// 
 	/// </summary>
-	public class Property
+	public class Setting
 	{
 		#region Members
 
         private string				_name;
         private double				_value;
+
+		// This is a short cut so we don't have to create two types of settings.  This is only used by the setting stored in the profile.
+		// The setting stored in the library does not make use of this member.
+		private bool				_override;
 
 		#endregion
 
@@ -21,7 +25,7 @@ namespace ProfileDemo
 		/// 
 		/// Required for serialization.
 		/// </summary>
-        public Property()
+        public Setting()
 		{
 		}
 
@@ -31,7 +35,7 @@ namespace ProfileDemo
 		/// 
 		/// Required for serialization.
 		/// </summary>
-        public Property(string name, double value)
+        public Setting(string name, double value)
 		{
 			_name = name;
 			_value = value;
@@ -60,18 +64,28 @@ namespace ProfileDemo
 			get => _value;
 			set => _value = value;
 		}
-        
-        #endregion
 
-        #region Functions
+		/// <summary>
+		/// Specified is the setting should be override by the value stored in the profile.  If the setting is
+		/// not overriden, the value stored in the library is used.
+		/// </summary>
+		public bool Override
+		{
+			get => _override;
+			set => _override=value;
+		}
+
+		#endregion
+
+		#region Methods
 
 
 
-        #endregion
+		#endregion
 
-        #region XML
+		#region XML
 
-        #endregion
+		#endregion
 
-    } // End class.
+	} // End class.
 } // End namespace.

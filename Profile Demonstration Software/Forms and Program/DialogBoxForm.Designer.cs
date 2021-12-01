@@ -1,4 +1,4 @@
-﻿namespace ProfileDemo
+﻿namespace CuraProfileDemonstration
 {
 	partial class DialogBoxForm
 	{

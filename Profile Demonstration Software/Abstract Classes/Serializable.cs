@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using DigitalProduction.XML.Serialization;
 
-namespace ProfileDemo
+namespace CuraProfileDemonstration
 {
 	/// <summary>
 	/// 
@@ -42,11 +42,11 @@ namespace ProfileDemo
 		/// Create an instance from a file.
 		/// </summary>
 		/// <param name="path">The file to read from.</param>
-		private static Serializable Deserialize<T>(string path) where T : Serializable
+		protected static T Deserialize<T>(string path) where T : Serializable
 		{
-			Serializable serial		= Serialization.DeserializeObject<T>(path);
+			T serial		= Serialization.DeserializeObject<T>(path);
 
-			serial._path			= path;
+			serial._path	= path;
 
 			return serial;
 		}
@@ -54,7 +54,7 @@ namespace ProfileDemo
 		/// <summary>
 		/// Main work of serialization.
 		/// </summary>
-		protected void Serialize(string path)
+		public void Serialize(string path)
 		{
 			Serialization.SerializeObject(this, path);
 		}

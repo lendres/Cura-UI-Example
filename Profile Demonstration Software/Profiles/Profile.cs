@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 using DigitalProduction.XML.Serialization;
 
-namespace ProfileDemo
+namespace CuraProfileDemonstration
 {
 	/// <summary>
 	/// 
@@ -11,7 +12,8 @@ namespace ProfileDemo
 	{
 		#region Members
 
-
+		private	List<Material>				_materialOverrides		= new List<Material>();
+		private List<Guid>					_materialIds			= new List<Guid>();
 
 		#endregion
 
@@ -39,9 +41,16 @@ namespace ProfileDemo
 			}
 		}
 
+		[XmlArray("materialoverrides"), XmlArrayItem("material")]
+		public List<Material> Materials
+		{
+			get => _materialOverrides;
+			set => _materialOverrides = value;
+		}
+
 		#endregion
 
-		#region Functions
+		#region Methods
 
 
 

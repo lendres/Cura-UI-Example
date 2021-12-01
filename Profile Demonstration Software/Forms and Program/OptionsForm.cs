@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using DigitalProduction.Forms;
 
-namespace ProfileDemo
+namespace CuraProfileDemonstration
 {
 	/// <summary>
-	/// 
+	/// Options form.
 	/// </summary>
-	public partial class DialogBoxForm : Form
+	public partial class OptionsForm : Form
 	{
 		#region Members
 
@@ -25,9 +26,11 @@ namespace ProfileDemo
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public DialogBoxForm()
+		public OptionsForm()
 		{
 			InitializeComponent();
+
+			//this.textBoxExample.Text						= registry.Example;
 		}
 
 		#endregion
@@ -35,17 +38,17 @@ namespace ProfileDemo
 		#region Event Handlers
 
 		/// <summary>
-		/// Get a file.
+		/// Click handler for browsing for a file.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
-		private void buttonBrowse_Click(object sender, EventArgs e)
+		/// <param name="e">Event Argument.</param>
+		private void buttonExample_Click(object sender, EventArgs e)
 		{
 			string path = FileSelect.BrowseForAnXMLFile(this);
 
 			if (path != "")
 			{
-				this.textBox.Text = path;
+				this.textBoxExample.Text = path;
 			}
 		}
 
@@ -53,20 +56,10 @@ namespace ProfileDemo
 		/// Ok click handler.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
-		/// <param name="e">Event arguments.</param>
+		/// <param name="e">Event Argument.</param>
 		private void bntOK_Click(object sender, EventArgs e)
 		{
-			// Ensure the data is valid.
-			if (!ValidateChildren())
-			{
-				// Have to set the DialogResult to none to prevent the form from closing.
-				this.DialogResult = DialogResult.None;
-				return;
-			}
 
-
-			// This will close the dialog as well.
-			this.DialogResult = DialogResult.OK;
 		}
 
 		#endregion
