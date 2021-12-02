@@ -33,6 +33,14 @@
 			Add(new Setting("Flow Rate", 100));
 		}
 
+		/// <summary>
+		/// Copy constructor.
+		/// </summary>
+		public Material(Material original) :
+			base(original)
+		{
+		}
+
 		#endregion
 
 		#region Properties
@@ -43,6 +51,18 @@
 		public override string GetFileExtension()
 		{
 			return Material.FileExtension;
+		}
+
+		#endregion
+
+		#region Methods
+
+		/// <summary>
+		/// Copy the object.
+		/// </summary>
+		public override SettingGroup Copy()
+		{
+			return new Material(this);
 		}
 
 		#endregion

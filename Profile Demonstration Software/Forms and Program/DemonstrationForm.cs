@@ -44,6 +44,8 @@ namespace CuraProfileDemonstration
 
 		private void PopulateControls()
 		{
+			this.comboBoxProfiles.Items.AddRange(_manager.ProfileGroup.ProfileNames.ToArray());
+			this.comboBoxProfiles.SelectedIndex = 0;
 		}
 
 		#endregion

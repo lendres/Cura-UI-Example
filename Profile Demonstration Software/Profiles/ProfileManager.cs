@@ -65,6 +65,15 @@ namespace CuraProfileDemonstration
 
 		#region Properties
 
+		/// <summary>
+		/// ProfileGroup access.
+		/// </summary>
+		public ProfileGroup ProfileGroup
+		{
+			get => _profileGroup;
+			set => _profileGroup = value;
+		}
+
 		#endregion
 
 		#region Methods
@@ -113,10 +122,10 @@ namespace CuraProfileDemonstration
 
 			Profile profile = new Profile("Profile 1");
 			profile.Initialize(material1, material2);
+			_profileGroup.Add(profile);
 
 			profile = new Profile("Profile 2");
 			profile.Initialize(material1, material2);
-
 			_profileGroup.Add(profile);
 
 			_profileGroup.Serialize(_libraryPath);

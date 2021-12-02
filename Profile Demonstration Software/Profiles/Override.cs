@@ -69,6 +69,16 @@ namespace CuraProfileDemonstration
 
 		#region Methods
 
+		/// <summary>
+		/// Initialize this object.
+		/// </summary>
+		/// <param name="settingGroup">SettingGroup to use as initializer.</param>
+		public void Initialize(SettingGroup settingGroup)
+		{
+			_defaultSettingGroupId	= settingGroup.Id;
+			_overrideSettingGroup	= settingGroup.Copy();
+		}
+
 		#endregion
 
 	} // End class.

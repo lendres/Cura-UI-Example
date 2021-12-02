@@ -37,7 +37,7 @@
 			this.LeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
 			this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
 			this.splitContainerMain = new System.Windows.Forms.SplitContainer();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.panelProfileControls = new System.Windows.Forms.Panel();
 			this.buttonSaveProfile = new System.Windows.Forms.Button();
 			this.comboBoxProfiles = new System.Windows.Forms.ComboBox();
 			this.tabControlSettingGroups = new System.Windows.Forms.TabControl();
@@ -74,7 +74,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
 			this.splitContainerMain.Panel2.SuspendLayout();
 			this.splitContainerMain.SuspendLayout();
-			this.panel1.SuspendLayout();
+			this.panelProfileControls.SuspendLayout();
 			this.tabControlSettingGroups.SuspendLayout();
 			this.tabPageMaterials.SuspendLayout();
 			this.toolStripFile.SuspendLayout();
@@ -154,21 +154,21 @@
 			// 
 			// splitContainerMain.Panel2
 			// 
-			this.splitContainerMain.Panel2.Controls.Add(this.panel1);
+			this.splitContainerMain.Panel2.Controls.Add(this.panelProfileControls);
 			this.splitContainerMain.Panel2.Controls.Add(this.tabControlSettingGroups);
 			this.splitContainerMain.Size = new System.Drawing.Size(1054, 602);
 			this.splitContainerMain.SplitterDistance = 679;
 			this.splitContainerMain.TabIndex = 0;
 			// 
-			// panel1
+			// panelProfileControls
 			// 
-			this.panel1.Controls.Add(this.buttonSaveProfile);
-			this.panel1.Controls.Add(this.comboBoxProfiles);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(371, 84);
-			this.panel1.TabIndex = 1;
+			this.panelProfileControls.Controls.Add(this.buttonSaveProfile);
+			this.panelProfileControls.Controls.Add(this.comboBoxProfiles);
+			this.panelProfileControls.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panelProfileControls.Location = new System.Drawing.Point(0, 0);
+			this.panelProfileControls.Name = "panelProfileControls";
+			this.panelProfileControls.Size = new System.Drawing.Size(371, 84);
+			this.panelProfileControls.TabIndex = 1;
 			// 
 			// buttonSaveProfile
 			// 
@@ -450,7 +450,7 @@
 			this.splitContainerMain.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
 			this.splitContainerMain.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
+			this.panelProfileControls.ResumeLayout(false);
 			this.tabControlSettingGroups.ResumeLayout(false);
 			this.tabPageMaterials.ResumeLayout(false);
 			this.toolStripFile.ResumeLayout(false);
@@ -501,7 +501,7 @@
 		private System.Windows.Forms.TabControl tabControlSettingGroups;
 		private System.Windows.Forms.TabPage tabPageMaterials;
 		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panelProfileControls;
 		private Forms_and_Program.SettingGroupControl settingGroupControl1;
 		private System.Windows.Forms.Button buttonSaveProfile;
 		private System.Windows.Forms.ComboBox comboBoxProfiles;

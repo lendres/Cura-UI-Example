@@ -15,7 +15,6 @@ namespace CuraProfileDemonstration
 		#region Members
 
         private List<Profile>           _profiles           = new List<Profile>();
-        private string                  _path;
 
 		#endregion
 
@@ -40,6 +39,25 @@ namespace CuraProfileDemonstration
 		{
 			get => _profiles;
 			set => _profiles = value;
+		}
+
+		/// <summary>
+		/// Get a list of the names of the profiles.
+		/// </summary>
+		[XmlIgnore()]
+		public List<string> ProfileNames
+		{
+			get
+			{
+				List<string> names = new List<string>();
+
+				foreach (Profile profile in _profiles)
+				{
+					names.Add(profile.Name);
+				}
+
+				return names;
+			}
 		}
 
 		#endregion

@@ -36,6 +36,14 @@ namespace CuraProfileDemonstration
 			Add(new Setting("Infill Extruder", "Extruder 1"));
 		}
 
+		/// <summary>
+		/// Copy constructor.
+		/// </summary>
+		public Support(Support original) :
+			base(original)
+		{
+		}
+
 		#endregion
 
 		#region Properties
@@ -46,6 +54,18 @@ namespace CuraProfileDemonstration
 		public override string GetFileExtension()
 		{
 			return Support.FileExtension;
+		}
+
+		#endregion
+
+		#region Methods
+
+		/// <summary>
+		/// Copy the object.
+		/// </summary>
+		public override SettingGroup Copy()
+		{
+			return new Support(this);
 		}
 
 		#endregion

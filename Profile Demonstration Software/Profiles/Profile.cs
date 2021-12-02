@@ -82,7 +82,7 @@ namespace CuraProfileDemonstration
 
 		public void Initialize(Material material1, Material material2)
 		{
-			_overrides[(int)OverrideEnum.Material1].DefaultSettingGroupId = material1.Id;
+			_overrides[(int)OverrideEnum.Material1].Initialize(material1);
 			_overrides[(int)OverrideEnum.Material2].DefaultSettingGroupId = material2.Id;
 		}
 

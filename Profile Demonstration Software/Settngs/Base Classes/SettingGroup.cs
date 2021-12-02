@@ -9,6 +9,9 @@ namespace CuraProfileDemonstration
 	/// <summary>
 	/// 
 	/// </summary>
+	[XmlInclude(typeof(Cooling))]
+	[XmlInclude(typeof(Material))]
+	[XmlInclude(typeof(Support))]
 	public abstract class SettingGroup : Serializable
 	{
 		#region Members
@@ -24,6 +27,14 @@ namespace CuraProfileDemonstration
 		/// </summary>
         public SettingGroup()
 		{
+		}
+
+		/// <summary>
+		/// Default constructor.
+		/// </summary>
+        public SettingGroup(SettingGroup original)
+		{
+			_settings = new Dictionary<string, Setting>(original._settings);
 		}
 
 		#endregion
@@ -86,6 +97,11 @@ namespace CuraProfileDemonstration
 		{
 			return _settings.Values.ElementAt(index);
 		}
+
+		/// <summary>
+		/// Copy the object.
+		/// </summary>
+		public abstract SettingGroup Copy();
 
 		#endregion
 

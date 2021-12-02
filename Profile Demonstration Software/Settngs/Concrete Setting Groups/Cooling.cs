@@ -33,6 +33,14 @@
 			Add(new Setting("Minimum Layer Type", 5));
 		}
 
+		/// <summary>
+		/// Copy constructor.
+		/// </summary>
+		public Cooling(Cooling original) :
+			base(original)
+		{
+		}
+
 		#endregion
 
 		#region Properties
@@ -43,6 +51,18 @@
 		public override string GetFileExtension()
 		{
 			return Cooling.FileExtension;
+		}
+
+		#endregion
+
+		#region Methods
+
+		/// <summary>
+		/// Copy the object.
+		/// </summary>
+		public override SettingGroup Copy()
+		{
+			return new Cooling(this);
 		}
 
 		#endregion
