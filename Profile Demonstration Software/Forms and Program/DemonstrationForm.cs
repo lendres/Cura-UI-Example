@@ -21,7 +21,7 @@ namespace CuraProfileDemonstration
 		#region Members
 
 
-		private Manager				_manager				= new Manager();
+		private ProfileManager				_manager				= new ProfileManager();
 
 		#endregion
 
@@ -34,13 +34,22 @@ namespace CuraProfileDemonstration
 		{
 			InitializeComponent();
 
-			//_manager.ReadLibraries()
+			PopulateControls();
+		}
+
+
+		#endregion
+
+		#region Methods
+
+		private void PopulateControls()
+		{
 		}
 
 		#endregion
 
 		#region Form Event Handlers
-		
+
 		/// <summary>
 		/// Clock ticking event.
 		/// </summary>
@@ -165,12 +174,9 @@ namespace CuraProfileDemonstration
 
 		#endregion
 
-		private void writeDefaultLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+		private void buttonSaveProfile_Click(object sender, EventArgs e)
 		{
-			// Get a new Project file path.  If no file is selected an empty string is return.
-			//string path = DirectorySelect.SelectDirectory("Select Library Location", true, DigitalProduction.Reflection.Assembly.Path());
-
-			//_manager.CreateInitialLibrary(path);
+			//_manager
 		}
 
 	} // End class.

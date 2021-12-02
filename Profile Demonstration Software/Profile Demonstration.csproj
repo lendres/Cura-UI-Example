@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="C5">
@@ -65,10 +66,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms and Program\DialogBoxForm.cs">
+    <Compile Include="Forms and Program\Not Used\DialogBoxForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms and Program\DialogBoxForm.Designer.cs">
+    <Compile Include="Forms and Program\Not Used\DialogBoxForm.Designer.cs">
       <DependentUpon>DialogBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms and Program\DemonstrationForm.cs">
@@ -77,10 +78,10 @@
     <Compile Include="Forms and Program\DemonstrationForm.Designer.cs">
       <DependentUpon>DemonstrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms and Program\OptionsForm.cs">
+    <Compile Include="Forms and Program\Not Used\OptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms and Program\OptionsForm.Designer.cs">
+    <Compile Include="Forms and Program\Not Used\OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms and Program\SettingControl.cs">
@@ -89,39 +90,52 @@
     <Compile Include="Forms and Program\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Materials\Material.cs" />
-    <Compile Include="Profiles\Manager.cs" />
-    <Compile Include="Settngs\Setting.cs" />
-    <Compile Include="Settngs\SettingGroup.cs" />
+    <Compile Include="Forms and Program\SettingGroupControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms and Program\SettingGroupControl.Designer.cs">
+      <DependentUpon>SettingGroupControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Override.cs" />
+    <Compile Include="Profiles\OverrideEnum.cs" />
+    <Compile Include="Settngs\Concrete Setting Groups\Support.cs" />
+    <Compile Include="Settngs\Concrete Setting Groups\Cooling.cs" />
+    <Compile Include="Settngs\Concrete Setting Groups\Material.cs" />
+    <Compile Include="Profiles\ProfileManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settngs\Base Classes\Setting.cs" />
+    <Compile Include="Settngs\Base Classes\SettingGroup.cs" />
     <Compile Include="Profiles\ProfileGroup.cs" />
     <Compile Include="Profiles\Profile.cs" />
     <Compile Include="Abstract Classes\Serializable.cs" />
     <Compile Include="Forms and Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstract Classes\UniequeId.cs" />
-    <Compile Include="Settngs\SettingGroupCollection.cs" />
-    <EmbeddedResource Include="Forms and Program\DialogBoxForm.resx">
+    <Compile Include="Settngs\Base Classes\SettingGroupCollection.cs" />
+    <EmbeddedResource Include="Forms and Program\Not Used\DialogBoxForm.resx">
       <DependentUpon>DialogBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms and Program\DemonstrationForm.resx">
       <DependentUpon>DemonstrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms and Program\OptionsForm.resx">
+    <EmbeddedResource Include="Forms and Program\Not Used\OptionsForm.resx">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms and Program\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms and Program\SettingGroupControl.resx">
+      <DependentUpon>SettingGroupControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -136,11 +150,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Icon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Forms and Program\EiffelTower-Ultimaker Cura.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\EiffelTower-Ultimaker Cura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OpenFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_16x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

@@ -47,7 +47,17 @@ namespace CuraProfileDemonstration
 		#region Events
 
 		/// <summary>
-		/// Override setting or not.
+		/// Save the override setting when the control is exited.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="eventArgs">Event arguments.</param>
+		private void textBoxValue_Leave(object sender, EventArgs e)
+		{
+			_overrideSetting.Value = this.textBoxValue.Text;
+		}
+
+		/// <summary>
+		/// Override setting or not.  Also stores the value in the data container.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="eventArgs">Event arguments.</param>
@@ -55,15 +65,16 @@ namespace CuraProfileDemonstration
 		{
 			bool enabled = this.checkBoxOverride.Checked;
 
-			this.numericUpDownValue.Enabled = enabled;
+			this.textBoxValue.Enabled = enabled;
+			_overrideSetting.Override = enabled;
 
 			if (enabled)
 			{
-				this.numericUpDownValue.Value  = (decimal)_overrideSetting.Value;
+				this.textBoxValue.Text  = _overrideSetting.Value;
 			}
 			else
 			{
-				this.numericUpDownValue.Value  = (decimal)_setting.Value;
+				this.textBoxValue.Text  = _setting.Value;
 			}
 		}
 

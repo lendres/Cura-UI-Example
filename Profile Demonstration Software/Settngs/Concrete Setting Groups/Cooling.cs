@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-
-namespace CuraProfileDemonstration
+﻿namespace CuraProfileDemonstration
 {
-	public class Material : SettingGroup
+	public class Cooling : SettingGroup
 	{
 		#region Members
 
-		public static string		FileExtension		= ".material";
+		public static string		FileExtension		= ".cooling";
 
 		#endregion
 
@@ -18,20 +15,22 @@ namespace CuraProfileDemonstration
 		/// 
 		/// Required for serializationi.
 		/// </summary>
-		public Material()
+		public Cooling()
 		{
 		}
 
 		/// <summary>
 		/// Constructor for creating a new material.
+		/// 
+		/// Create some settings with default values.
 		/// </summary>
-		public Material(string name)
+		public Cooling(string name)
 		{
 			this.Name = name;
 
-			AddProperty("Temperature", 200);
-			AddProperty("Cool Down Modifier", 2);
-			AddProperty("Flow Rate", 100);
+			Add(new Setting("Fan Speed", 100));
+			Add(new Setting("Initial Fan Speed", 10));
+			Add(new Setting("Minimum Layer Type", 5));
 		}
 
 		#endregion
@@ -43,12 +42,8 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		public override string GetFileExtension()
 		{
-			return Material.FileExtension;
+			return Cooling.FileExtension;
 		}
-
-		#endregion
-
-		#region XML
 
 		#endregion
 

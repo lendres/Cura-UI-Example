@@ -1,5 +1,6 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 using System.Xml.Serialization;
 using DigitalProduction.XML.Serialization;
 
@@ -37,46 +38,57 @@ namespace CuraProfileDemonstration
 		[XmlArray("profiles"), XmlArrayItem("profile")]
 		public List<Profile> Profiles
 		{
-			get
-			{
-				return _profiles;
-			}
-
-			set
-			{
-				_profiles = value;
-			}
+			get => _profiles;
+			set => _profiles = value;
 		}
 
 		#endregion
 
 		#region Methods
 
-
+		/// <summary>
+		/// Add a Profile to the collection.
+		/// </summary>
+		/// <param name="profile">The Profile to add.</param>
+		public void Add(Profile profile)
+		{
+			_profiles.Add(profile);
+		}
 
 		#endregion
 
 		#region XML
 
-        /// <summary>
-		/// Create an instance from a file.
+		/// <summary>
+		/// Deserializes all the files of a specific file type in a directory.  Those files are converted to a SettingGroup on a one-to-one basis.
 		/// </summary>
-		/// <param name="path">The file to read from.</param>
-		/// <returns>The deserialized file types.</returns>
-		private static ProfileGroup Deserialize(string path)
+		/// <param name="path">Directory to deserialize from.</param>
+		/// <param name="fileExtension">File extension of the files to deserialize.</param>
+		public static ProfileGroup Deserialize(string path, string fileExtension)
 		{
-			ProfileGroup group			= Serialization.DeserializeObject<ProfileGroup>(path);
-            group._path                  = path;
-			return group;
+			ProfileGroup profileGroup = new ProfileGroup();
+
+			List<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => Path.GetExtension(s).ToLowerInvariant() == fileExtension).ToList();
+
+			foreach (string file in files)
+			{
+				Profile profile = Serialization.DeserializeObject<Profile>(Path.Combine(path, file));
+				profileGroup._profiles.Add(profile);
+			}
+
+			return profileGroup;
 		}
 
 		/// <summary>
-		/// Write this object to a file.  The Path must be set and represent a valid path or this method will throw an exception.
+		/// Serialize all the SettingGroups into separate files.
 		/// </summary>
-		/// <exception cref="InvalidOperationException">Thrown when the projects path is not set or not valid.</exception>
-		public void Serialize()
+		/// <param name="path">Directory to serialize to.</param>
+		public void Serialize(string path)
 		{
-			Serialization.SerializeObject(this, _path);
+			foreach (Profile profile in _profiles)
+			{
+				profile.Serialize(path);
+			}
 		}
 
 		#endregion

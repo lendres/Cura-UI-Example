@@ -11,7 +11,7 @@ namespace CuraProfileDemonstration
 		#region Members
 
         private string				_name					= "";
-        private double				_value					= 0;
+        private string				_value					= "";
 
 		// This is a short cut so we don't have to create two types of settings.  This is only used by the setting stored in the profile.
 		// The setting stored in the library does not make use of this member.
@@ -38,7 +38,19 @@ namespace CuraProfileDemonstration
         public Setting(string name)
 		{
 			_name		= name;
-			_value		= 0;
+			_value		= "";
+			_override	= false;
+		}
+
+		/// <summary>
+		/// Default constructor.
+		/// 
+		/// Required for serialization.
+		/// </summary>
+        public Setting(string name, string value)
+		{
+			_name		= name;
+			_value		= value;
 			_override	= false;
 		}
 
@@ -50,7 +62,7 @@ namespace CuraProfileDemonstration
         public Setting(string name, double value)
 		{
 			_name		= name;
-			_value		= value;
+			_value		= value.ToString();
 			_override	= false;
 		}
 
@@ -73,7 +85,7 @@ namespace CuraProfileDemonstration
         /// everything is a double.  In practice you would also need int and bool types.
         /// </summary>
 		[XmlAttribute("value")]
-        public double Value
+        public string Value
 		{
 			get => _value;
 			set => _value = value;
@@ -95,10 +107,6 @@ namespace CuraProfileDemonstration
 		#region Methods
 
 
-
-		#endregion
-
-		#region XML
 
 		#endregion
 

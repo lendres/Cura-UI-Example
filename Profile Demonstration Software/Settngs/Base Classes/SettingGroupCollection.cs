@@ -63,7 +63,11 @@ namespace CuraProfileDemonstration
 
 		#region XML
 
-
+		/// <summary>
+		/// Deserializes all the files of a specific file type in a directory.  Those files are converted to a SettingGroup on a one-to-one basis.
+		/// </summary>
+		/// <param name="path">Directory to deserialize from.</param>
+		/// <param name="fileExtension">File extension of the files to deserialize.</param>
 		public static SettingGroupCollection<T> Deserialize(string path, string fileExtension)
 		{
 			SettingGroupCollection<T> settingGroupCollection = new SettingGroupCollection<T>();
@@ -80,9 +84,9 @@ namespace CuraProfileDemonstration
 		}
 
 		/// <summary>
-		/// Serialize all the SettingGroups.
+		/// Serialize all the SettingGroups into separate files.
 		/// </summary>
-		/// <param name="path"></param>
+		/// <param name="path">Directory to serialize to.</param>
 		public void Serialize(string path)
 		{
 			foreach (KeyValuePair<Guid, SettingGroup> keyValuePair in _settingGroups)

@@ -14,8 +14,7 @@ namespace CuraProfileDemonstration
 
 		public static string				FileExtension			= ".profile";
 
-		private	List<Material>				_materialOverrides		= new List<Material>();
-		private List<Guid>					_materialIds			= new List<Guid>();
+		private List<Override>				_overrides				= new List<Override>();
 
 		#endregion
 
@@ -26,6 +25,21 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		public Profile()
 		{
+			for (int i = 0; i < (int)OverrideEnum.Length; i++)
+			{
+				_overrides.Add(new Override());
+			}
+
+//			_overrides[(int)OverrideEnum.Material1].OverrideSettingGroup = new Material();
+		}
+
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		public Profile(string name) :
+			this()
+		{
+			this.Name = name;
 		}
 
 		#endregion
@@ -43,12 +57,16 @@ namespace CuraProfileDemonstration
 			}
 		}
 
-		[XmlArray("materialoverrides"), XmlArrayItem("material")]
-		public List<Material> Materials
+		/// <summary>
+		/// For serialization.
+		/// </summary>
+		[XmlArray("overrides"), XmlArrayItem("override")]
+		public List<Override> Overrides
 		{
-			get => _materialOverrides;
-			set => _materialOverrides = value;
+			get => _overrides;
+			set => _overrides = value;
 		}
+
 
 		#endregion
 
@@ -60,6 +78,12 @@ namespace CuraProfileDemonstration
 		public override string GetFileExtension()
 		{
 			return Profile.FileExtension;
+		}
+
+		public void Initialize(Material material1, Material material2)
+		{
+			_overrides[(int)OverrideEnum.Material1].DefaultSettingGroupId = material1.Id;
+			_overrides[(int)OverrideEnum.Material2].DefaultSettingGroupId = material2.Id;
 		}
 
 		#endregion

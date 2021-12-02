@@ -68,13 +68,12 @@ namespace CuraProfileDemonstration
 		#region Methods
 
 		/// <summary>
-		/// Create a new property.
+		/// Add a setting
 		/// </summary>
-		/// <param name="name">Property name.</param>
-		/// <param name="value">Property value.</param>
-		public void AddProperty(string name, double value)
+		/// <param name="setting">Setting to add</param>
+		public void Add(Setting setting)
 		{
-			_settings.Add(name, new Setting(name));
+			_settings.Add(setting.Name, setting);
 		}
 
 		/// <summary>
@@ -87,10 +86,6 @@ namespace CuraProfileDemonstration
 		{
 			return _settings.Values.ElementAt(index);
 		}
-
-		#endregion
-
-		#region XML
 
 		#endregion
 
