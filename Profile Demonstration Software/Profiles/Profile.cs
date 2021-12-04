@@ -12,9 +12,9 @@ namespace CuraProfileDemonstration
 	{
 		#region Members
 
-		public static string				FileExtension			= ".profile";
+		public static string					FileExtension				= ".profile";
 
-		private List<Override>				_overrides				= new List<Override>();
+		private List<ProfileSection>			_profileSections			= new List<ProfileSection>();
 
 		#endregion
 
@@ -25,12 +25,7 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		public Profile()
 		{
-			for (int i = 0; i < (int)OverrideEnum.Length; i++)
-			{
-				_overrides.Add(new Override());
-			}
-
-//			_overrides[(int)OverrideEnum.Material1].OverrideSettingGroup = new Material();
+//			_overrides[(int)OverrideEnum.Material1].OverrideSettingsGroup = new Material();
 		}
 
 		/// <summary>
@@ -60,11 +55,11 @@ namespace CuraProfileDemonstration
 		/// <summary>
 		/// For serialization.
 		/// </summary>
-		[XmlArray("overrides"), XmlArrayItem("override")]
-		public List<Override> Overrides
+		[XmlArray("profilesections"), XmlArrayItem("profilesection")]
+		public List<ProfileSection> Overrides
 		{
-			get => _overrides;
-			set => _overrides = value;
+			get => _profileSections;
+			set => _profileSections = value;
 		}
 
 
@@ -73,7 +68,7 @@ namespace CuraProfileDemonstration
 		#region Methods
 
 		/// <summary>
-		/// File extension for serialization.
+		/// File extension for serialization/deserialization.
 		/// </summary>
 		public override string GetFileExtension()
 		{
@@ -82,8 +77,18 @@ namespace CuraProfileDemonstration
 
 		public void Initialize(Material material1, Material material2)
 		{
-			_overrides[(int)OverrideEnum.Material1].Initialize(material1);
-			_overrides[(int)OverrideEnum.Material2].DefaultSettingGroupId = material2.Id;
+			for (int i = 0; i < (int)ProfileSectionEnum.Length; i++)
+			{
+				_profileSections.Add(new ProfileSection());
+			}
+
+			_profileSections[(int)ProfileSectionEnum.Material1].Initialize(material1);
+			_profileSections[(int)ProfileSectionEnum.Material2].Initialize(material2);
+		}
+
+		public ProfileSection GetProfileSection(ProfileSectionEnum profileSection)
+		{
+			return _profileSections[(int)profileSection];
 		}
 
 		#endregion

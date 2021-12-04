@@ -40,14 +40,10 @@
 			this.panelProfileControls = new System.Windows.Forms.Panel();
 			this.buttonSaveProfile = new System.Windows.Forms.Button();
 			this.comboBoxProfiles = new System.Windows.Forms.ComboBox();
-			this.tabControlSettingGroups = new System.Windows.Forms.TabControl();
+			this.tabControlSettingsGroups = new System.Windows.Forms.TabControl();
 			this.tabPageMaterials = new System.Windows.Forms.TabPage();
-			this.settingGroupControl1 = new CuraProfileDemonstration.Forms_and_Program.SettingGroupControl();
+			this.settingsGroupControlMaterial1 = new CuraProfileDemonstration.ProfileSectionControl();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.toolStripFile = new System.Windows.Forms.ToolStrip();
-			this.toolStripButtonNew = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
 			this.statusBar = new System.Windows.Forms.StatusBar();
 			this.statusBarPanelStatus = new System.Windows.Forms.StatusBarPanel();
 			this.statusBarPanelBlank = new System.Windows.Forms.StatusBarPanel();
@@ -69,15 +65,13 @@
 			this.toolStripMenuItemTools = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripMenuItemOptions = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
-			this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
 			this.toolStripContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
 			this.splitContainerMain.Panel2.SuspendLayout();
 			this.splitContainerMain.SuspendLayout();
 			this.panelProfileControls.SuspendLayout();
-			this.tabControlSettingGroups.SuspendLayout();
+			this.tabControlSettingsGroups.SuspendLayout();
 			this.tabPageMaterials.SuspendLayout();
-			this.toolStripFile.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.statusBarPanelStatus)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.statusBarPanelBlank)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.statusBarPanelClock)).BeginInit();
@@ -88,7 +82,7 @@
 			// 
 			this.timerClock.Enabled = true;
 			this.timerClock.Interval = 1000;
-			this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
+			this.timerClock.Tick += new System.EventHandler(this.TimerClock_Tick);
 			// 
 			// BottomToolStripPanel
 			// 
@@ -136,10 +130,6 @@
 			this.toolStripContainer1.TabIndex = 35;
 			this.toolStripContainer1.Text = "toolStripContainer1";
 			// 
-			// toolStripContainer1.TopToolStripPanel
-			// 
-			this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripFile);
-			// 
 			// splitContainerMain
 			// 
 			this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -155,7 +145,7 @@
 			// splitContainerMain.Panel2
 			// 
 			this.splitContainerMain.Panel2.Controls.Add(this.panelProfileControls);
-			this.splitContainerMain.Panel2.Controls.Add(this.tabControlSettingGroups);
+			this.splitContainerMain.Panel2.Controls.Add(this.tabControlSettingsGroups);
 			this.splitContainerMain.Size = new System.Drawing.Size(1054, 602);
 			this.splitContainerMain.SplitterDistance = 679;
 			this.splitContainerMain.TabIndex = 0;
@@ -180,7 +170,7 @@
 			this.buttonSaveProfile.TabIndex = 1;
 			this.buttonSaveProfile.Text = "Save";
 			this.buttonSaveProfile.UseVisualStyleBackColor = true;
-			this.buttonSaveProfile.Click += new System.EventHandler(this.buttonSaveProfile_Click);
+			this.buttonSaveProfile.Click += new System.EventHandler(this.ButtonSaveProfile_Click);
 			// 
 			// comboBoxProfiles
 			// 
@@ -192,24 +182,25 @@
 			this.comboBoxProfiles.Name = "comboBoxProfiles";
 			this.comboBoxProfiles.Size = new System.Drawing.Size(333, 21);
 			this.comboBoxProfiles.TabIndex = 0;
+			this.comboBoxProfiles.SelectedIndexChanged += new System.EventHandler(this.ComboBoxProfiles_SelectedIndexChanged);
 			// 
-			// tabControlSettingGroups
+			// tabControlSettingsGroups
 			// 
-			this.tabControlSettingGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.tabControlSettingsGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControlSettingGroups.Controls.Add(this.tabPageMaterials);
-			this.tabControlSettingGroups.Controls.Add(this.tabPage2);
-			this.tabControlSettingGroups.Location = new System.Drawing.Point(0, 108);
-			this.tabControlSettingGroups.Name = "tabControlSettingGroups";
-			this.tabControlSettingGroups.SelectedIndex = 0;
-			this.tabControlSettingGroups.Size = new System.Drawing.Size(371, 494);
-			this.tabControlSettingGroups.TabIndex = 0;
+			this.tabControlSettingsGroups.Controls.Add(this.tabPageMaterials);
+			this.tabControlSettingsGroups.Controls.Add(this.tabPage2);
+			this.tabControlSettingsGroups.Location = new System.Drawing.Point(0, 108);
+			this.tabControlSettingsGroups.Name = "tabControlSettingsGroups";
+			this.tabControlSettingsGroups.SelectedIndex = 0;
+			this.tabControlSettingsGroups.Size = new System.Drawing.Size(371, 494);
+			this.tabControlSettingsGroups.TabIndex = 0;
 			// 
 			// tabPageMaterials
 			// 
 			this.tabPageMaterials.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPageMaterials.Controls.Add(this.settingGroupControl1);
+			this.tabPageMaterials.Controls.Add(this.settingsGroupControlMaterial1);
 			this.tabPageMaterials.Location = new System.Drawing.Point(4, 22);
 			this.tabPageMaterials.Name = "tabPageMaterials";
 			this.tabPageMaterials.Padding = new System.Windows.Forms.Padding(3);
@@ -217,13 +208,15 @@
 			this.tabPageMaterials.TabIndex = 0;
 			this.tabPageMaterials.Text = "Materials";
 			// 
-			// settingGroupControl1
+			// settingsGroupControlMaterial1
 			// 
-			this.settingGroupControl1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.settingGroupControl1.Location = new System.Drawing.Point(3, 3);
-			this.settingGroupControl1.Name = "settingGroupControl1";
-			this.settingGroupControl1.Size = new System.Drawing.Size(357, 132);
-			this.settingGroupControl1.TabIndex = 0;
+			this.settingsGroupControlMaterial1.Dock = System.Windows.Forms.DockStyle.Top;
+			this.settingsGroupControlMaterial1.Location = new System.Drawing.Point(3, 3);
+			this.settingsGroupControlMaterial1.Name = "settingsGroupControlMaterial1";
+			this.settingsGroupControlMaterial1.ProfileCategoryEnum = CuraProfileDemonstration.ProfileCategoryEnum.Material;
+			this.settingsGroupControlMaterial1.ProfileSectionEnum = CuraProfileDemonstration.ProfileSectionEnum.Material1;
+			this.settingsGroupControlMaterial1.Size = new System.Drawing.Size(357, 132);
+			this.settingsGroupControlMaterial1.TabIndex = 0;
 			// 
 			// tabPage2
 			// 
@@ -234,48 +227,6 @@
 			this.tabPage2.Size = new System.Drawing.Size(363, 468);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
-			// 
-			// toolStripFile
-			// 
-			this.toolStripFile.Dock = System.Windows.Forms.DockStyle.None;
-			this.toolStripFile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonNew,
-            this.toolStripButtonOpen,
-            this.toolStripButtonSave});
-			this.toolStripFile.Location = new System.Drawing.Point(4, 0);
-			this.toolStripFile.Name = "toolStripFile";
-			this.toolStripFile.Size = new System.Drawing.Size(81, 25);
-			this.toolStripFile.TabIndex = 33;
-			// 
-			// toolStripButtonNew
-			// 
-			this.toolStripButtonNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButtonNew.Image = global::CuraProfileDemonstration.Properties.Resources.NewFile_16x;
-			this.toolStripButtonNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButtonNew.Name = "toolStripButtonNew";
-			this.toolStripButtonNew.Size = new System.Drawing.Size(23, 22);
-			this.toolStripButtonNew.Text = "&New";
-			this.toolStripButtonNew.ToolTipText = "New Project (Ctrl+N)";
-			// 
-			// toolStripButtonOpen
-			// 
-			this.toolStripButtonOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButtonOpen.Image = global::CuraProfileDemonstration.Properties.Resources.OpenFile_16x;
-			this.toolStripButtonOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButtonOpen.Name = "toolStripButtonOpen";
-			this.toolStripButtonOpen.Size = new System.Drawing.Size(23, 22);
-			this.toolStripButtonOpen.Text = "&Open...";
-			this.toolStripButtonOpen.ToolTipText = "Open Project (Ctrl+O)";
-			// 
-			// toolStripButtonSave
-			// 
-			this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.toolStripButtonSave.Enabled = false;
-			this.toolStripButtonSave.Image = global::CuraProfileDemonstration.Properties.Resources.Save_16x;
-			this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButtonSave.Name = "toolStripButtonSave";
-			this.toolStripButtonSave.Size = new System.Drawing.Size(23, 22);
-			this.toolStripButtonSave.Text = "&Save";
 			// 
 			// statusBar
 			// 
@@ -344,7 +295,6 @@
 			this.toolStripMenuItemNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
 			this.toolStripMenuItemNew.Size = new System.Drawing.Size(155, 22);
 			this.toolStripMenuItemNew.Text = "&New...";
-			this.toolStripMenuItemNew.Click += new System.EventHandler(this.toolStripMenuItemFileNew_Click);
 			// 
 			// toolStripMenuItemOpen
 			// 
@@ -352,14 +302,12 @@
 			this.toolStripMenuItemOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
 			this.toolStripMenuItemOpen.Size = new System.Drawing.Size(155, 22);
 			this.toolStripMenuItemOpen.Text = "&Open...";
-			this.toolStripMenuItemOpen.Click += new System.EventHandler(this.toolStripMenuItemFileOpen_Click);
 			// 
 			// toolStripMenuItemClose
 			// 
 			this.toolStripMenuItemClose.Name = "toolStripMenuItemClose";
 			this.toolStripMenuItemClose.Size = new System.Drawing.Size(155, 22);
 			this.toolStripMenuItemClose.Text = "&Close";
-			this.toolStripMenuItemClose.Click += new System.EventHandler(this.toolStripMenuItemFileClose_Click);
 			// 
 			// toolStripSeparatorFile1
 			// 
@@ -379,7 +327,6 @@
 			this.toolStripMenuItemSaveAs.Name = "toolStripMenuItemSaveAs";
 			this.toolStripMenuItemSaveAs.Size = new System.Drawing.Size(155, 22);
 			this.toolStripMenuItemSaveAs.Text = "Save &As...";
-			this.toolStripMenuItemSaveAs.Click += new System.EventHandler(this.toolStripMenuItemFileSaveAs_Click);
 			// 
 			// mnuFileExport
 			// 
@@ -408,7 +355,7 @@
 			this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
 			this.toolStripMenuItemExit.Size = new System.Drawing.Size(155, 22);
 			this.toolStripMenuItemExit.Text = "E&xit";
-			this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
+			this.toolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
 			// 
 			// toolStripMenuItemProject
 			// 
@@ -427,9 +374,9 @@
 			// toolStripMenuItemOptions
 			// 
 			this.toolStripMenuItemOptions.Name = "toolStripMenuItemOptions";
-			this.toolStripMenuItemOptions.Size = new System.Drawing.Size(180, 22);
+			this.toolStripMenuItemOptions.Size = new System.Drawing.Size(116, 22);
 			this.toolStripMenuItemOptions.Text = "&Options";
-			this.toolStripMenuItemOptions.Click += new System.EventHandler(this.toolStripMenuItemOptions_Click);
+			this.toolStripMenuItemOptions.Click += new System.EventHandler(this.ToolStripMenuItemOptions_Click);
 			// 
 			// Demostration
 			// 
@@ -443,18 +390,14 @@
 			this.Name = "Demostration";
 			this.Text = "Cura Profile Demonstration Software";
 			this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-			this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
-			this.toolStripContainer1.TopToolStripPanel.PerformLayout();
 			this.toolStripContainer1.ResumeLayout(false);
 			this.toolStripContainer1.PerformLayout();
 			this.splitContainerMain.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
 			this.splitContainerMain.ResumeLayout(false);
 			this.panelProfileControls.ResumeLayout(false);
-			this.tabControlSettingGroups.ResumeLayout(false);
+			this.tabControlSettingsGroups.ResumeLayout(false);
 			this.tabPageMaterials.ResumeLayout(false);
-			this.toolStripFile.ResumeLayout(false);
-			this.toolStripFile.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.statusBarPanelStatus)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.statusBarPanelBlank)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.statusBarPanelClock)).EndInit();
@@ -473,9 +416,6 @@
 		private System.Windows.Forms.ToolStripPanel RightToolStripPanel;
 		private System.Windows.Forms.ToolStripPanel LeftToolStripPanel;
 		private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-		private System.Windows.Forms.ToolStrip toolStripFile;
-		private System.Windows.Forms.ToolStripButton toolStripButtonNew;
-		private System.Windows.Forms.ToolStripButton toolStripButtonOpen;
 		private System.Windows.Forms.StatusBar statusBar;
 		private System.Windows.Forms.StatusBarPanel statusBarPanelStatus;
 		private System.Windows.Forms.StatusBarPanel statusBarPanelBlank;
@@ -495,14 +435,13 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemProject;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTools;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOptions;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSave;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSave;
 		private System.Windows.Forms.SplitContainer splitContainerMain;
-		private System.Windows.Forms.TabControl tabControlSettingGroups;
+		private System.Windows.Forms.TabControl tabControlSettingsGroups;
 		private System.Windows.Forms.TabPage tabPageMaterials;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.Panel panelProfileControls;
-		private Forms_and_Program.SettingGroupControl settingGroupControl1;
+		private ProfileSectionControl settingsGroupControlMaterial1;
 		private System.Windows.Forms.Button buttonSaveProfile;
 		private System.Windows.Forms.ComboBox comboBoxProfiles;
 	}

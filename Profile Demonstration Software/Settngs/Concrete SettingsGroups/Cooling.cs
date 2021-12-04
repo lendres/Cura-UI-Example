@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-
-namespace CuraProfileDemonstration
+﻿namespace CuraProfileDemonstration
 {
-	public class Support : SettingGroup
+	public class Cooling : SettingsGroup
 	{
 		#region Members
 
-		public static string		FileExtension		= ".support";
+		public static string		FileExtension		= ".cooling";
 
 		#endregion
 
@@ -18,7 +15,7 @@ namespace CuraProfileDemonstration
 		/// 
 		/// Required for serializationi.
 		/// </summary>
-		public Support()
+		public Cooling()
 		{
 		}
 
@@ -27,19 +24,19 @@ namespace CuraProfileDemonstration
 		/// 
 		/// Create some settings with default values.
 		/// </summary>
-		public Support(string name)
+		public Cooling(string name)
 		{
 			this.Name = name;
 
-			Add(new Setting("Overhang Angle", 55));
-			Add(new Setting("Interface Extruder", "Extruder 2"));
-			Add(new Setting("Infill Extruder", "Extruder 1"));
+			Add(new Setting("Fan Speed", 100));
+			Add(new Setting("Initial Fan Speed", 10));
+			Add(new Setting("Minimum Layer Type", 5));
 		}
 
 		/// <summary>
 		/// Copy constructor.
 		/// </summary>
-		public Support(Support original) :
+		public Cooling(Cooling original) :
 			base(original)
 		{
 		}
@@ -53,7 +50,7 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		public override string GetFileExtension()
 		{
-			return Support.FileExtension;
+			return Cooling.FileExtension;
 		}
 
 		#endregion
@@ -63,9 +60,9 @@ namespace CuraProfileDemonstration
 		/// <summary>
 		/// Copy the object.
 		/// </summary>
-		public override SettingGroup Copy()
+		public override SettingsGroup Copy()
 		{
-			return new Support(this);
+			return new Cooling(this);
 		}
 
 		#endregion

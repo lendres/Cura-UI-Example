@@ -16,7 +16,7 @@ namespace CuraProfileDemonstration
 
 		private int						_index;
 
-		private Setting					_setting;
+		private Setting					_defaultSetting;
 		private Setting					_overrideSetting;
 
 		#endregion
@@ -51,7 +51,7 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="eventArgs">Event arguments.</param>
-		private void textBoxValue_Leave(object sender, EventArgs e)
+		private void TextBoxValue_Leave(object sender, EventArgs e)
 		{
 			_overrideSetting.Value = this.textBoxValue.Text;
 		}
@@ -61,20 +61,26 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="eventArgs">Event arguments.</param>
-		private void checkBoxOverride_CheckedChanged(object sender, EventArgs eventArgs)
+		private void CheckBoxOverride_CheckedChanged(object sender, EventArgs eventArgs)
 		{
-			bool enabled = this.checkBoxOverride.Checked;
+			SetControls();
+			_overrideSetting.Override = this.checkBoxOverride.Checked;
+		}
 
-			this.textBoxValue.Enabled = enabled;
-			_overrideSetting.Override = enabled;
+		/// <summary>
+		/// Save the override back to the library and establish it as the default.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="eventArgs">Event arguments.</param>
+		private void buttonSaveProfile_Click(object sender, EventArgs e)
+		{
+			DialogResult dialogResult  = MessageBox.Show(this, "Saving this setting can effect other profiles.  Continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-			if (enabled)
+			if (dialogResult == DialogResult.Yes)
 			{
-				this.textBoxValue.Text  = _overrideSetting.Value;
-			}
-			else
-			{
-				this.textBoxValue.Text  = _setting.Value;
+				_defaultSetting.Value = this.textBoxValue.Text;
+				_defaultSetting.Parent.Serialize();
+				this.checkBoxOverride.Checked = false;
 			}
 		}
 
@@ -85,16 +91,39 @@ namespace CuraProfileDemonstration
 		/// <summary>
 		/// Initial the control.
 		/// </summary>
-		/// <param name="settingGroup">The group of settings that are in the library.</param>
-		/// <param name="overrideSettingGroup">The group of settings that are the overrides.</param>
-		public void Initialize(SettingGroup settingGroup, SettingGroup overrideSettingGroup)
+		/// <param name="defaultSettingsGroup">The group of settings that are in the library.</param>
+		/// <param name="overrideSettingsGroup">The group of settings that are the overrides.</param>
+		public void Initialize(SettingsGroup defaultSettingsGroup, SettingsGroup overrideSettingsGroup)
 		{
 			// Save setting and override for use.
-			_setting				= settingGroup.GetProperty(_index);
-			_overrideSetting		= overrideSettingGroup.GetProperty(_index);
+			_defaultSetting					= defaultSettingsGroup.GetProperty(_index);
+			_overrideSetting				= overrideSettingsGroup.GetProperty(_index);
 
 			// Set up the label with the name of the property.
-			this.labelName.Text		= _setting.Name;
+			this.labelName.Text				= _defaultSetting.Name;
+
+			this.checkBoxOverride.Checked	= _overrideSetting.Override;
+
+			SetControls();
+		}
+
+		/// <summary>
+		/// Sets the states and values of the check box and text box.
+		/// </summary>
+		private void SetControls()
+		{
+			bool enabled = this.checkBoxOverride.Checked;
+
+			this.textBoxValue.Enabled = enabled;
+
+			if (enabled)
+			{
+				this.textBoxValue.Text  = _overrideSetting.Value;
+			}
+			else
+			{
+				this.textBoxValue.Text  = _defaultSetting.Value;
+			}
 		}
 
 		#endregion

@@ -1,6 +1,6 @@
 ﻿namespace CuraProfileDemonstration
 {
-	public class Material : SettingGroup
+	public class Material : SettingsGroup
 	{
 		#region Members
 
@@ -24,13 +24,13 @@
 		/// 
 		/// Create some settings with default values.
 		/// </summary>
-		public Material(string name)
+		public Material(string name, double temerature, double coolDownModifier, double flowRate)
 		{
 			this.Name = name;
 
-			Add(new Setting("Temperature", 200));
-			Add(new Setting("Cool Down Modifier", 2));
-			Add(new Setting("Flow Rate", 100));
+			Add(new Setting("Temperature", temerature));
+			Add(new Setting("Cool Down Modifier", coolDownModifier));
+			Add(new Setting("Flow Rate", flowRate));
 		}
 
 		/// <summary>
@@ -60,7 +60,7 @@
 		/// <summary>
 		/// Copy the object.
 		/// </summary>
-		public override SettingGroup Copy()
+		public override SettingsGroup Copy()
 		{
 			return new Material(this);
 		}

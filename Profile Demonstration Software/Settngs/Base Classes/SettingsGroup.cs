@@ -7,12 +7,14 @@ using DigitalProduction.XML.Serialization;
 namespace CuraProfileDemonstration
 {
 	/// <summary>
+	/// A group of settings.
 	/// 
+	/// The [XmlInclude] lines are required to create the contrete class types while serialzing/deserializing from this base class.
 	/// </summary>
 	[XmlInclude(typeof(Cooling))]
 	[XmlInclude(typeof(Material))]
 	[XmlInclude(typeof(Support))]
-	public abstract class SettingGroup : Serializable
+	public abstract class SettingsGroup : Serializable
 	{
 		#region Members
 
@@ -25,14 +27,14 @@ namespace CuraProfileDemonstration
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-        public SettingGroup()
+        public SettingsGroup()
 		{
 		}
 
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-        public SettingGroup(SettingGroup original)
+        public SettingsGroup(SettingsGroup original)
 		{
 			_settings = new Dictionary<string, Setting>(original._settings);
 		}
@@ -51,6 +53,9 @@ namespace CuraProfileDemonstration
 		//	set => _properties = value;
 		//}
 
+		/// <summary>
+		/// Dictionary that contains the properties.
+		/// </summary>
 		[XmlArray("properties"), XmlArrayItem("property")]
 		public SerializableKeyValuePair<string, Setting>[] Properties
 		{
@@ -101,7 +106,31 @@ namespace CuraProfileDemonstration
 		/// <summary>
 		/// Copy the object.
 		/// </summary>
-		public abstract SettingGroup Copy();
+		public abstract SettingsGroup Copy();
+
+		#endregion
+
+		#region XML
+
+		/// <summary>
+		/// Deserializes a SettingsGroupl
+		/// </summary>
+		/// <param name="fullPath">Directory to deserialize from.</param>
+		/// <param name="fileExtension">File extension of the files to deserialize.</param>
+		public static SettingsGroup Deserialize<T>(string fullPath) where T : SettingsGroup
+		{
+			T settingsGroup = Serialization.DeserializeObject<T>(fullPath);
+
+			settingsGroup._fullPath = fullPath;
+
+			foreach (KeyValuePair<string, Setting> keyValuePair in settingsGroup._settings)
+			{
+				// Value is the Setting.
+				keyValuePair.Value.Parent = settingsGroup;
+			}
+
+			return settingsGroup;
+		}
 
 		#endregion
 

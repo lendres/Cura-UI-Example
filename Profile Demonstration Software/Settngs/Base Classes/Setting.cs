@@ -17,6 +17,8 @@ namespace CuraProfileDemonstration
 		// The setting stored in the library does not make use of this member.
 		private bool				_override				= false;
 
+		private SettingsGroup		_parent;
+
 		#endregion
 
 		#region Construction
@@ -100,6 +102,16 @@ namespace CuraProfileDemonstration
 		{
 			get => _override;
 			set => _override = value;
+		}
+
+		/// <summary>
+		/// Parent object of this Setting.
+		/// </summary>
+		[XmlIgnore()]
+		public SettingsGroup Parent
+		{
+			get => _parent;
+			set => 	_parent = value;
 		}
 
 		#endregion

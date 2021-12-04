@@ -9,15 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Plossum.CommandLine;
 using DigitalProduction.Forms;
+using DigitalProduction.Delegates;
 
 namespace CuraProfileDemonstration
 {
 	/// <summary>
 	/// Main window.
 	/// </summary>
-	[CommandLineManager(ApplicationName = "Template", Copyright = "Copyright (c) APS Technologies.")]
+	[CommandLineManager(ApplicationName = "Cura Demonstration Example", Copyright = "Copyright (c) Lance A. Endres.")]
 	public partial class Demostration : Form
 	{
+		#region Events
+
+		private event NoArgumentsEventHandler		OnSelectedProfileChanged;
+
+		#endregion
+
 		#region Members
 
 
@@ -34,7 +41,9 @@ namespace CuraProfileDemonstration
 		{
 			InitializeComponent();
 
-			PopulateControls();
+			// Add entries to drop down lists, et cetera.
+			PopulateDataToControls();
+
 		}
 
 
@@ -42,10 +51,57 @@ namespace CuraProfileDemonstration
 
 		#region Methods
 
-		private void PopulateControls()
+		/// <summary>
+		/// Initializes all controls.
+		/// </summary>
+		private void PopulateDataToControls()
 		{
-			this.comboBoxProfiles.Items.AddRange(_manager.ProfileGroup.ProfileNames.ToArray());
+			this.comboBoxProfiles.Items.AddRange(_manager.ProfileCollection.ProfileNames.ToArray());
+
+			// Set the control to the first item.
+			// This will also trigger the selected index event which will populate the values from the Profile to the controls.
 			this.comboBoxProfiles.SelectedIndex = 0;
+
+			FindProfileSelectControls(this);
+		}
+
+		/// <summary>
+		/// Find all the ProfileSectionControls.
+		/// </summary>
+		/// <param name="rootControl">Control to search through.</param>
+		protected void FindProfileSelectControls(Control rootControl)
+		{
+			foreach (Control childControl in rootControl.Controls)
+			{
+				if (childControl is ProfileSectionControl)
+				{
+					ProfileSectionControl profileSectionControl = (ProfileSectionControl)childControl;
+					profileSectionControl.InitializeFromProfile();
+				}
+
+				// Search the children controls.
+				FindProfileSelectControls(childControl);
+			}
+		}
+
+		/// <summary>
+		/// Updates everything after a new Profile is selected.
+		/// </summary>
+		//private void UpdateSelectedProfile()
+		//{
+
+		//}
+
+		/// <summary>
+		/// Safely fire an event.
+		/// </summary>
+		private void RaiseOnSelectedProfileChangedEvent()
+		{
+			// Trigger event only if there are any subscribers.
+			if (this.OnSelectedProfileChanged != null)
+			{
+				OnSelectedProfileChanged();
+			}
 		}
 
 		#endregion
@@ -57,27 +113,9 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="eventArgs">Event arguments.</param>
-		private void timerClock_Tick(object sender, EventArgs eventArgs)
+		private void TimerClock_Tick(object sender, EventArgs eventArgs)
 		{
 			this.statusBarPanelClock.Text = System.DateTime.Now.ToLongTimeString();
-		}
-
-		/// <summary>
-		/// Key up event handler.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="eventArgs">Event arguments.</param>
-		private void Form1_KeyUp(object sender, KeyEventArgs eventArgs)
-		{
-			switch (eventArgs.KeyCode)
-			{
-				case Keys.F5:
-				{
-//					Solve();
-//					e.Handled = true;
-					break;
-				}
-			}
 		}
 
 		#endregion
@@ -85,70 +123,15 @@ namespace CuraProfileDemonstration
 		#region File Menu Event Handlers
 
 		/// <summary>
-		/// "New" menu item click handler.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="eventArgs">Event arguments.</param>
-		protected void toolStripMenuItemFileNew_Click(object sender, EventArgs eventArgs)
-		{
-			//New();
-		}
-
-		/// <summary>
-		/// "Open" menu item click handler.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="eventArgs">Event arguments.</param>
-		protected void toolStripMenuItemFileOpen_Click(object sender, EventArgs eventArgs)
-		{
-			//BrowseAndOpen();
-		}
-
-		/// <summary>
-		/// "Close" menu item click handler.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="eventArgs">Event arguments.</param>
-		protected void toolStripMenuItemFileClose_Click(object sender, EventArgs eventArgs)
-		{
-			//CloseProject();
-		}
-
-		/// <summary>
-		/// "Save" menu item click handler.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="eventArgs">Event arguments.</param>
-		protected void toolStripMenuItemFileSave_Click(object sender, EventArgs eventArgs)
-		{
-			//Save();
-		}
-
-		/// <summary>
-		/// "Save As" menu item click handler.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="eventArgs">Event arguments.</param>
-		protected void toolStripMenuItemFileSaveAs_Click(object sender, EventArgs eventArgs)
-		{
-			//SaveAs();
-		}
-
-		/// <summary>
 		/// Close the form.
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="eventArgs">Event arguments.</param>
-		private void toolStripMenuItemExit_Click(object sender, EventArgs eventArgs)
+		private void ToolStripMenuItemExit_Click(object sender, EventArgs eventArgs)
 		{
 			Close();
 		}
 
-		#endregion
-
-		#region Project Menu Event Handlers
-
-	
 		#endregion
 
 		#region Tools Menu Event Handlers
@@ -158,7 +141,7 @@ namespace CuraProfileDemonstration
 		/// </summary>
 		/// <param name="sender">Sender.</param>
 		/// <param name="eventArgs">Event arguments.</param>
-		private void toolStripMenuItemOptions_Click(object sender, EventArgs eventArgs)
+		private void ToolStripMenuItemOptions_Click(object sender, EventArgs eventArgs)
 		{
 			OptionsForm options = new OptionsForm();
 			DialogResult result = options.ShowDialog(this);
@@ -176,10 +159,31 @@ namespace CuraProfileDemonstration
 
 		#endregion
 
-		private void buttonSaveProfile_Click(object sender, EventArgs e)
+		#region Controls Event Handlers
+
+		/// <summary>
+		/// Profile save button click handler.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="eventArgs">Event arguments.</param>
+		private void ButtonSaveProfile_Click(object sender, EventArgs e)
 		{
-			//_manager
+			string activeProfile = this.comboBoxProfiles.Text;
+			_manager.SerializeProfile(activeProfile);
 		}
+
+		/// <summary>
+		/// Profile drop down box index changed event handler.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="eventArgs">Event arguments.</param>
+		private void ComboBoxProfiles_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			_manager.SetSelectedProfile(this.comboBoxProfiles.Text);
+			RaiseOnSelectedProfileChangedEvent();
+		}
+
+		#endregion
 
 	} // End class.
 } // End namespace.

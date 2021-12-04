@@ -9,8 +9,10 @@ namespace CuraProfileDemonstration
 
 	/// <summary>
 	/// Container for Profiles.
+	/// 
+	/// This class is fairly dumb.  It is only meant to act as a container and have a few convenient functions/methods.
 	/// </summary>
-	public class ProfileGroup
+	public class ProfileCollection
 	{
 		#region Members
 
@@ -23,7 +25,7 @@ namespace CuraProfileDemonstration
 		/// <summary>
 		/// Default constructor.
 		/// </summary>
-		public ProfileGroup()
+		public ProfileCollection()
 		{
 		}
 
@@ -73,18 +75,35 @@ namespace CuraProfileDemonstration
 			_profiles.Add(profile);
 		}
 
+		/// <summary>
+		/// Get a profile by name.
+		/// </summary>
+		/// <param name="name">Profile name.</param>
+		public Profile GetProfile(string name)
+		{
+			foreach (Profile profile in _profiles)
+			{
+				if (profile.Name == name)
+				{
+					return profile;
+				}
+			}
+
+			throw new System.Exception("Profile not found.");
+		}
+
 		#endregion
 
 		#region XML
 
 		/// <summary>
-		/// Deserializes all the files of a specific file type in a directory.  Those files are converted to a SettingGroup on a one-to-one basis.
+		/// Deserializes all the files of a specific file type in a directory.  Those files are converted to a SettingsGroup on a one-to-one basis.
 		/// </summary>
 		/// <param name="path">Directory to deserialize from.</param>
 		/// <param name="fileExtension">File extension of the files to deserialize.</param>
-		public static ProfileGroup Deserialize(string path, string fileExtension)
+		public static ProfileCollection Deserialize(string path, string fileExtension)
 		{
-			ProfileGroup profileGroup = new ProfileGroup();
+			ProfileCollection profileGroup = new ProfileCollection();
 
 			List<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly).Where(s => Path.GetExtension(s).ToLowerInvariant() == fileExtension).ToList();
 
@@ -98,7 +117,7 @@ namespace CuraProfileDemonstration
 		}
 
 		/// <summary>
-		/// Serialize all the SettingGroups into separate files.
+		/// Serialize all the SettingsGroups into separate files.
 		/// </summary>
 		/// <param name="path">Directory to serialize to.</param>
 		public void Serialize(string path)

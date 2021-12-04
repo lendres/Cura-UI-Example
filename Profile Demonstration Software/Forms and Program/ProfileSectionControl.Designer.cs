@@ -1,8 +1,14 @@
-﻿namespace CuraProfileDemonstration.Forms_and_Program
+﻿namespace CuraProfileDemonstration
 {
-	partial class SettingGroupControl
+	partial class ProfileSectionControl
 	{
 		#region Members
+
+		private System.Windows.Forms.ComboBox comboBoxSettingsGroupSelector;
+		
+		private SettingControl settingControl0;
+		private SettingControl settingControl1;
+		private SettingControl settingControl2;
 
 		/// <summary> 
 		/// Required designer variable.
@@ -39,7 +45,7 @@
 			this.settingControl2 = new CuraProfileDemonstration.SettingControl();
 			this.settingControl1 = new CuraProfileDemonstration.SettingControl();
 			this.settingControl0 = new CuraProfileDemonstration.SettingControl();
-			this.comboBoxSettingGroupSelector = new System.Windows.Forms.ComboBox();
+			this.comboBoxSettingsGroupSelector = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// settingControl2
@@ -72,26 +78,27 @@
 			this.settingControl0.Size = new System.Drawing.Size(326, 26);
 			this.settingControl0.TabIndex = 0;
 			// 
-			// comboBoxSettingGroupSelector
+			// comboBoxSettingsGroupSelector
 			// 
-			this.comboBoxSettingGroupSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.comboBoxSettingsGroupSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBoxSettingGroupSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxSettingGroupSelector.FormattingEnabled = true;
-			this.comboBoxSettingGroupSelector.Location = new System.Drawing.Point(3, 3);
-			this.comboBoxSettingGroupSelector.Name = "comboBoxSettingGroupSelector";
-			this.comboBoxSettingGroupSelector.Size = new System.Drawing.Size(326, 21);
-			this.comboBoxSettingGroupSelector.TabIndex = 3;
+			this.comboBoxSettingsGroupSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxSettingsGroupSelector.FormattingEnabled = true;
+			this.comboBoxSettingsGroupSelector.Location = new System.Drawing.Point(3, 3);
+			this.comboBoxSettingsGroupSelector.Name = "comboBoxSettingsGroupSelector";
+			this.comboBoxSettingsGroupSelector.Size = new System.Drawing.Size(326, 21);
+			this.comboBoxSettingsGroupSelector.TabIndex = 3;
+			this.comboBoxSettingsGroupSelector.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSettingsGroupSelector_SelectedIndexChanged);
 			// 
-			// SettingGroupControl
+			// ProfileSectionControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.comboBoxSettingGroupSelector);
+			this.Controls.Add(this.comboBoxSettingsGroupSelector);
 			this.Controls.Add(this.settingControl2);
 			this.Controls.Add(this.settingControl1);
 			this.Controls.Add(this.settingControl0);
-			this.Name = "SettingGroupControl";
+			this.Name = "ProfileSectionControl";
 			this.Size = new System.Drawing.Size(332, 136);
 			this.ResumeLayout(false);
 
@@ -99,9 +106,5 @@
 
 		#endregion
 
-		private SettingControl settingControl0;
-		private SettingControl settingControl1;
-		private SettingControl settingControl2;
-		private System.Windows.Forms.ComboBox comboBoxSettingGroupSelector;
 	} // End class.
 } // End namespace.

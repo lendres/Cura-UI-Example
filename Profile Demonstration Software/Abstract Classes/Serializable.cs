@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 using DigitalProduction.XML.Serialization;
+using DigitalProduction.SystemDpm;
 
 namespace CuraProfileDemonstration
 {
@@ -16,7 +17,7 @@ namespace CuraProfileDemonstration
 		private string									_name;
 		
 		// This is the location of the project file that this file was serialized from and will be serialized to.
-		protected string								_path							= "";
+		protected string								_fullPath							= "";
 
 		#endregion
 
@@ -68,6 +69,16 @@ namespace CuraProfileDemonstration
 
 		//	return serial;
 		//}
+
+		/// <summary>
+		/// Serialize to the location that the object was deserialized from.
+		/// 
+		/// To use this, the _fullPath (directory, file name, and file extension) must be set when the object is deserialized.
+		/// </summary>
+		public void Serialize()
+		{
+			Serialization.SerializeObject(this, _fullPath);
+		}
 
 		/// <summary>
 		/// Main work of serialization.
