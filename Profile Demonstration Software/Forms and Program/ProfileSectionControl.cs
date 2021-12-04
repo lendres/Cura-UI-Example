@@ -18,6 +18,8 @@ namespace CuraProfileDemonstration
 		private ProfileSectionEnum				_profileSectionEnum				= ProfileSectionEnum.Length;
 
 		private ProfileSection					_profileSection;
+		private SettingsGroupCollection			_librarySettingsGroupCollection;
+		private SettingsGroup					_defaultSettingsGroup;
 
 		#endregion
 
@@ -63,44 +65,64 @@ namespace CuraProfileDemonstration
 		/// <param name="eventArgs">Event arguments.</param>
 		private void ComboBoxSettingsGroupSelector_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			SettingsGroupCollection librarySettingsGroupCollection = ProfileManager.Manager.GetLibrarySettingsGroupCollection(_profileCategoryEnum);
+			_defaultSettingsGroup					= _librarySettingsGroupCollection.GetSettingsGroup(this.comboBoxSettingsGroupSelector.Text);
+			_profileSection.DefaultSettingsGroupId	= _defaultSettingsGroup.Id;
 
-			SettingsGroup defaultSettingsGroup		= librarySettingsGroupCollection.GetSettingsGroup(this.comboBoxSettingsGroupSelector.Text);
-			_profileSection.DefaultSettingsGroupId	= defaultSettingsGroup.Id;
-
-			InitializeSettingControls(defaultSettingsGroup);
+			InitializeSettingControls();
 		}
 
 		#endregion
 
 		#region Methods
 
+		/// <summary>
+		/// Initialize the control from the profile.
+		/// </summary>
 		public void InitializeFromProfile()
 		{
 			// Must go before call to library collection.
-			UpdaeProfileSection();
+			UpdateProfileAndSettingsGroups();
 
-			SettingsGroupCollection librarySettingsGroupCollection = ProfileManager.Manager.GetLibrarySettingsGroupCollection(_profileCategoryEnum);
-			SettingsGroup defaultSettingsGroup = librarySettingsGroupCollection.GetSettingsGroup(_profileSection.DefaultSettingsGroupId);
+			InitializeSettingControls();
 
-			InitializeSettingControls(defaultSettingsGroup);
-
-			// Populate drop down box.
-			this.comboBoxSettingsGroupSelector.Items.AddRange(librarySettingsGroupCollection.SettingsGroupsNames.ToArray());
-			this.comboBoxSettingsGroupSelector.SelectedItem  = defaultSettingsGroup.Name;
+			// Populate and update drop down box.
+			this.comboBoxSettingsGroupSelector.Items.AddRange(_librarySettingsGroupCollection.SettingsGroupsNames.ToArray());
+			this.comboBoxSettingsGroupSelector.SelectedItem  = _defaultSettingsGroup.Name;
 		}
 
-		private void InitializeSettingControls(SettingsGroup defaultSettingsGroup)
+		/// <summary>
+		/// Update everything from a newly selected profile.
+		/// </summary>
+		public void UpdateFromProfile()
+		{
+			// Must go before call to library collection.
+			UpdateProfileAndSettingsGroups();
+
+			InitializeSettingControls();
+
+			// Update drop down box.
+			this.comboBoxSettingsGroupSelector.SelectedItem  = _defaultSettingsGroup.Name;
+		}
+
+		/// <summary>
+		/// Initialize the settings.
+		/// </summary>
+		private void InitializeSettingControls()
 		{
 			// Initialize the SettingsControls.
-			this.settingControl0.Initialize(defaultSettingsGroup, _profileSection.OverrideSettingsGroup);
-			this.settingControl1.Initialize(defaultSettingsGroup, _profileSection.OverrideSettingsGroup);
-			this.settingControl2.Initialize(defaultSettingsGroup, _profileSection.OverrideSettingsGroup);
+			this.settingControl0.Initialize(_defaultSettingsGroup, _profileSection.OverrideSettingsGroup);
+			this.settingControl1.Initialize(_defaultSettingsGroup, _profileSection.OverrideSettingsGroup);
+			this.settingControl2.Initialize(_defaultSettingsGroup, _profileSection.OverrideSettingsGroup);
 		}
 
-		private void UpdaeProfileSection()
+		/// <summary>
+		/// Gather the necessary data.
+		/// </summary>
+		private void UpdateProfileAndSettingsGroups()
 		{
 			_profileSection = ProfileManager.Manager.SelectedProfile.GetProfileSection(_profileSectionEnum);
+			_librarySettingsGroupCollection	= ProfileManager.Manager.GetLibrarySettingsGroupCollection(_profileCategoryEnum);
+			_defaultSettingsGroup			= _librarySettingsGroupCollection.GetSettingsGroup(_profileSection.DefaultSettingsGroupId);
 		}
 
 		#endregion

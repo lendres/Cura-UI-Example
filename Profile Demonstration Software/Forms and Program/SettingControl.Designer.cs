@@ -73,6 +73,7 @@
 			this.textBoxValue.Name = "textBoxValue";
 			this.textBoxValue.Size = new System.Drawing.Size(82, 20);
 			this.textBoxValue.TabIndex = 3;
+			this.textBoxValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			this.textBoxValue.Leave += new System.EventHandler(this.TextBoxValue_Leave);
 			// 
 			// buttonSaveProfile

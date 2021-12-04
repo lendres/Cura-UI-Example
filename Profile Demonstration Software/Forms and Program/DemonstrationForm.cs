@@ -77,20 +77,13 @@ namespace CuraProfileDemonstration
 				{
 					ProfileSectionControl profileSectionControl = (ProfileSectionControl)childControl;
 					profileSectionControl.InitializeFromProfile();
+					this.OnSelectedProfileChanged += profileSectionControl.UpdateFromProfile;
 				}
 
 				// Search the children controls.
 				FindProfileSelectControls(childControl);
 			}
 		}
-
-		/// <summary>
-		/// Updates everything after a new Profile is selected.
-		/// </summary>
-		//private void UpdateSelectedProfile()
-		//{
-
-		//}
 
 		/// <summary>
 		/// Safely fire an event.

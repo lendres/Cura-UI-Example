@@ -114,8 +114,11 @@ namespace CuraProfileDemonstration
 		{
 			bool enabled = this.checkBoxOverride.Checked;
 
-			this.textBoxValue.Enabled = enabled;
+			// Set the text box and save button status.
+			this.textBoxValue.ReadOnly		= !enabled;
+			this.buttonSaveProfile.Enabled	= enabled;
 
+			// Establish the value in the text box.
 			if (enabled)
 			{
 				this.textBoxValue.Text  = _overrideSetting.Value;
