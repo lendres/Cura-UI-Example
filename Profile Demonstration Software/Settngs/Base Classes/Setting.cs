@@ -4,7 +4,8 @@ using System.Xml.Serialization;
 namespace CuraProfileDemonstration
 {
 	/// <summary>
-	/// 
+	/// A single setting.  It holds the value and its name.  For this simple deomonstration software, we just store everything
+	/// as a string value.
 	/// </summary>
 	public class Setting
 	{
@@ -45,9 +46,7 @@ namespace CuraProfileDemonstration
 		}
 
 		/// <summary>
-		/// Default constructor.
-		/// 
-		/// Required for serialization.
+		/// String constructor.
 		/// </summary>
         public Setting(string name, string value)
 		{
@@ -57,11 +56,19 @@ namespace CuraProfileDemonstration
 		}
 
 		/// <summary>
-		/// Default constructor.
-		/// 
-		/// Required for serialization.
+		/// Double constructor.
 		/// </summary>
         public Setting(string name, double value)
+		{
+			_name		= name;
+			_value		= value.ToString();
+			_override	= false;
+		}
+
+		/// <summary>
+		/// Bool constructor.
+		/// </summary>
+        public Setting(string name, bool value)
 		{
 			_name		= name;
 			_value		= value.ToString();

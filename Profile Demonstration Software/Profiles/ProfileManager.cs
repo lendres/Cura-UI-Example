@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace CuraProfileDemonstration
 {
 	/// <summary>
-	/// 
+	/// Container for the profiles.
 	/// </summary>
 	public class ProfileManager
 	{
@@ -124,6 +118,7 @@ namespace CuraProfileDemonstration
 			_librarySettingsGroups[(int)ProfileCategoryEnum.Cooling]		= SettingsGroupCollection.Deserialize<Cooling>(_libraryPath, Cooling.FileExtension);
 			_librarySettingsGroups[(int)ProfileCategoryEnum.Material]		= SettingsGroupCollection.Deserialize<Material>(_libraryPath, Material.FileExtension);
 			_librarySettingsGroups[(int)ProfileCategoryEnum.Support]		= SettingsGroupCollection.Deserialize<Support>(_libraryPath, Support.FileExtension);
+			_librarySettingsGroups[(int)ProfileCategoryEnum.Walls]			= SettingsGroupCollection.Deserialize<Walls>(_libraryPath, Walls.FileExtension);
 
 			_profileCollection = ProfileCollection.Deserialize(_libraryPath, Profile.FileExtension);
 		}
@@ -139,8 +134,9 @@ namespace CuraProfileDemonstration
 			// Create a cooling library.
 			settingsGroupCollection = _librarySettingsGroups[(int)ProfileCategoryEnum.Cooling];
 
-			settingsGroupCollection.Add(new Cooling("Max"));
-			settingsGroupCollection.Add(new Cooling("Half"));
+			Cooling cooling = new Cooling("Max", 100, 50, 5);
+			settingsGroupCollection.Add(cooling);
+			settingsGroupCollection.Add(new Cooling("Half", 50, 10, 5));
 
 			_librarySettingsGroups[(int)ProfileCategoryEnum.Cooling].Serialize(_libraryPath);
 
@@ -161,19 +157,34 @@ namespace CuraProfileDemonstration
 			// Create a support library.
 			settingsGroupCollection =  _librarySettingsGroups[(int)ProfileCategoryEnum.Support];
 
-			settingsGroupCollection.Add(new Support("Separate Interface"));
-			settingsGroupCollection.Add(new Support("All Same Material"));
+			Support support = new Support("Separate Interface", 55, "Extruder 2", "Extruder 1");
+			settingsGroupCollection.Add(support);
+			settingsGroupCollection.Add(new Support("All Same Material", 55, "Extruder 2", "Extruder 2"));
+
+			settingsGroupCollection.Serialize(_libraryPath);
+
+			// Create a walls library.
+			settingsGroupCollection =  _librarySettingsGroups[(int)ProfileCategoryEnum.Walls];
+
+			Walls walls1 = new Walls("Standard Walls", 1, true, "Back");
+			Walls walls2 = new Walls("Thick Walls", 1, true, "Back");
+			settingsGroupCollection.Add(walls1);
+			settingsGroupCollection.Add(walls2);
 
 			settingsGroupCollection.Serialize(_libraryPath);
 
 			// Create some Profiles.
-			Profile profile = new Profile("Profile 1");
-			profile.Initialize(material1, material2);
-			_profileCollection.Add(profile);
-
-			profile = new Profile("Profile 2");
-			profile.Initialize(material1, material2);
-			_profileCollection.Add(profile);
+			for (int i = 0; i < 2; i++)
+			{
+				Profile profile = new Profile("Profile " + (i+1).ToString());
+				profile.Initialize(ProfileSectionEnum.Cooling, cooling);
+				profile.Initialize(ProfileSectionEnum.Material1, material1);
+				profile.Initialize(ProfileSectionEnum.Material2, material2);
+				profile.Initialize(ProfileSectionEnum.Support, support);
+				profile.Initialize(ProfileSectionEnum.Walls1, walls1);
+				profile.Initialize(ProfileSectionEnum.Walls2, walls1);
+				_profileCollection.Add(profile);
+			}
 
 			_profileCollection.Serialize(_libraryPath);
 		}

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
-
-namespace CuraProfileDemonstration
+﻿namespace CuraProfileDemonstration
 {
+	/// <summary>
+	/// Specifics for the support SettingsGroup.
+	/// </summary>
 	public class Support : SettingsGroup
 	{
 		#region Members
@@ -23,17 +23,15 @@ namespace CuraProfileDemonstration
 		}
 
 		/// <summary>
-		/// Constructor for creating a new material.
-		/// 
-		/// Create some settings with default values.
+		/// Constructor for creating a new support settings group.
 		/// </summary>
-		public Support(string name)
+		public Support(string name, double overHangAngle, string interfaceExtruder, string infillExtruder)
 		{
 			this.Name = name;
 
 			Add(new Setting("Overhang Angle", 55));
-			Add(new Setting("Interface Extruder", "Extruder 2"));
-			Add(new Setting("Infill Extruder", "Extruder 1"));
+			Add(new Setting("Interface Extruder", interfaceExtruder));
+			Add(new Setting("Infill Extruder", infillExtruder));
 		}
 
 		/// <summary>

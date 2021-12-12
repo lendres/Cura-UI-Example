@@ -1,5 +1,8 @@
 ﻿namespace CuraProfileDemonstration
 {
+	/// <summary>
+	/// Specifics for the Cooling SettingGroup.
+	/// </summary>
 	public class Cooling : SettingsGroup
 	{
 		#region Members
@@ -24,13 +27,13 @@
 		/// 
 		/// Create some settings with default values.
 		/// </summary>
-		public Cooling(string name)
+		public Cooling(string name, int fanSpeed, int fanInitialSpeed, int minimumLayerTime)
 		{
 			this.Name = name;
 
 			Add(new Setting("Fan Speed", 100));
 			Add(new Setting("Initial Fan Speed", 10));
-			Add(new Setting("Minimum Layer Type", 5));
+			Add(new Setting("Minimum Layer Time", 5));
 		}
 
 		/// <summary>

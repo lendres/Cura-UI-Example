@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CuraProfileDemonstration
 {
-	public partial class ProfileSectionControl : UserControl
+	public partial class SettingsGroupSelectionControl : UserControl
 	{
 		#region Members
 
@@ -25,7 +19,7 @@ namespace CuraProfileDemonstration
 
 		#region Construction
 
-		public ProfileSectionControl()
+		public SettingsGroupSelectionControl()
 		{
 			InitializeComponent();
 		}
@@ -40,8 +34,16 @@ namespace CuraProfileDemonstration
 		[Category("Cura")]
 		public ProfileCategoryEnum ProfileCategoryEnum
 		{
-			get => _profileCategoryEnum;
-			set => _profileCategoryEnum=value;
+			get
+			{
+				return _profileCategoryEnum;
+			}
+
+			set
+			{
+				_profileCategoryEnum	= value;
+				this.groupBox.Text		= DigitalProduction.Reflection.Attributes.GetDescription(_profileCategoryEnum);
+			}
 		}
 
 		/// <summary>

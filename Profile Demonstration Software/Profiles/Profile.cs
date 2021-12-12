@@ -1,12 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using DigitalProduction.XML.Serialization;
 
 namespace CuraProfileDemonstration
 {
 	/// <summary>
-	/// 
+	/// Top level profile container.
 	/// </summary>
 	public class Profile : Serializable
 	{
@@ -21,20 +19,25 @@ namespace CuraProfileDemonstration
 		#region Construction
 
 		/// <summary>
-		/// Default constructor.
+		/// Default constructor.  Used for deserialization.  The deserialization will create the ProfileSections.
 		/// </summary>
 		public Profile()
 		{
-//			_overrides[(int)OverrideEnum.Material1].OverrideSettingsGroup = new Material();
 		}
 
 		/// <summary>
-		/// Constructor.
+		/// Constructor for creating a Profile programmically.  It creates the ProfileSections so the can be accessed later.
 		/// </summary>
 		public Profile(string name) :
 			this()
 		{
 			this.Name = name;
+
+			for (int i = 0; i < (int)ProfileSectionEnum.Length; i++)
+			{
+				_profileSections.Add(new ProfileSection());
+			}
+
 		}
 
 		#endregion
@@ -75,25 +78,25 @@ namespace CuraProfileDemonstration
 			return Profile.FileExtension;
 		}
 
-		public void Initialize(Material material1, Material material2)
+		/// <summary>
+		/// Initialize a profile section.
+		/// </summary>
+		/// <param name="profileSection">ProfileSection to initialize.</param>
+		/// <param name="settingsGroup">SettingsGroup.</param>
+		public void Initialize(ProfileSectionEnum profileSection, SettingsGroup settingsGroup)
 		{
-			for (int i = 0; i < (int)ProfileSectionEnum.Length; i++)
-			{
-				_profileSections.Add(new ProfileSection());
-			}
 
-			_profileSections[(int)ProfileSectionEnum.Material1].Initialize(material1);
-			_profileSections[(int)ProfileSectionEnum.Material2].Initialize(material2);
+			_profileSections[(int)profileSection].Initialize(settingsGroup);
 		}
 
+		/// <summary>
+		/// Get a ProfileSection.
+		/// </summary>
+		/// <param name="profileSection">ProfileSection to return.</param>
 		public ProfileSection GetProfileSection(ProfileSectionEnum profileSection)
 		{
 			return _profileSections[(int)profileSection];
 		}
-
-		#endregion
-
-		#region XML
 
 		#endregion
 

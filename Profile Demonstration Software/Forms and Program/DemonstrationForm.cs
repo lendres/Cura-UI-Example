@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DigitalProduction.Delegates;
 using Plossum.CommandLine;
-using DigitalProduction.Forms;
-using DigitalProduction.Delegates;
+using System;
+using System.Windows.Forms;
 
 namespace CuraProfileDemonstration
 {
@@ -26,7 +18,6 @@ namespace CuraProfileDemonstration
 		#endregion
 
 		#region Members
-
 
 		private ProfileManager				_manager				= new ProfileManager();
 
@@ -45,7 +36,6 @@ namespace CuraProfileDemonstration
 			PopulateDataToControls();
 
 		}
-
 
 		#endregion
 
@@ -73,9 +63,9 @@ namespace CuraProfileDemonstration
 		{
 			foreach (Control childControl in rootControl.Controls)
 			{
-				if (childControl is ProfileSectionControl)
+				if (childControl is SettingsGroupSelectionControl)
 				{
-					ProfileSectionControl profileSectionControl = (ProfileSectionControl)childControl;
+					SettingsGroupSelectionControl profileSectionControl = (SettingsGroupSelectionControl)childControl;
 					profileSectionControl.InitializeFromProfile();
 					this.OnSelectedProfileChanged += profileSectionControl.UpdateFromProfile;
 				}
@@ -123,31 +113,6 @@ namespace CuraProfileDemonstration
 		private void ToolStripMenuItemExit_Click(object sender, EventArgs eventArgs)
 		{
 			Close();
-		}
-
-		#endregion
-
-		#region Tools Menu Event Handlers
-
-		/// <summary>
-		/// Show the options.
-		/// </summary>
-		/// <param name="sender">Sender.</param>
-		/// <param name="eventArgs">Event arguments.</param>
-		private void ToolStripMenuItemOptions_Click(object sender, EventArgs eventArgs)
-		{
-			OptionsForm options = new OptionsForm();
-			DialogResult result = options.ShowDialog(this);
-
-			// The options can change the text displayed in the comparison chart so we need to repopulate it in case
-			// that option was changed.  Only do it on an "OK" result of the dialog.
-			if (result == DialogResult.OK)
-			{
-//                if (_project != null)
-//                {
-////					_project.UpdateAfterOptionsChanged();
-//                }
-			}
 		}
 
 		#endregion

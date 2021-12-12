@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.Xml.Serialization;
 using System.IO;
-using DigitalProduction.XML.Serialization;
+using System.Linq;
 
 namespace CuraProfileDemonstration
 {
@@ -41,14 +36,14 @@ namespace CuraProfileDemonstration
 		{
 			get
 			{
-			List<string> names = new List<string>();
+				List<string> names = new List<string>();
 
-			foreach (KeyValuePair<Guid, SettingsGroup> keyValuePair in _settingsGroups)
-			{
-				names.Add(keyValuePair.Value.Name);
-			}
+				foreach (KeyValuePair<Guid, SettingsGroup> keyValuePair in _settingsGroups)
+				{
+					names.Add(keyValuePair.Value.Name);
+				}
 
-			return names;
+				return names;
 			}
 		}
 

@@ -67,23 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms and Program\Not Used\DialogBoxForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms and Program\Not Used\DialogBoxForm.Designer.cs">
-      <DependentUpon>DialogBoxForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms and Program\DemonstrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms and Program\DemonstrationForm.Designer.cs">
       <DependentUpon>DemonstrationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms and Program\Not Used\OptionsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms and Program\Not Used\OptionsForm.Designer.cs">
-      <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms and Program\SettingControl.cs">
       <SubType>UserControl</SubType>
@@ -91,15 +79,16 @@
     <Compile Include="Forms and Program\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms and Program\ProfileSectionControl.cs">
+    <Compile Include="Forms and Program\SettingsGroupSectionControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms and Program\ProfileSectionControl.Designer.cs">
-      <DependentUpon>ProfileSectionControl.cs</DependentUpon>
+    <Compile Include="Forms and Program\SettingsGroupSectionControl.Designer.cs">
+      <DependentUpon>SettingsGroupSectionControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Profiles\ProfileSection.cs" />
     <Compile Include="Profiles\ProfileSectionEnum.cs" />
     <Compile Include="Profiles\ProfileCategoryEnum.cs" />
+    <Compile Include="Settngs\Concrete SettingsGroups\Walls.cs" />
     <Compile Include="Settngs\Concrete SettingsGroups\Support.cs" />
     <Compile Include="Settngs\Concrete SettingsGroups\Cooling.cs" />
     <Compile Include="Settngs\Concrete SettingsGroups\Material.cs" />
@@ -117,20 +106,14 @@
     <Compile Include="Forms and Program\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settngs\Base Classes\SettingsGroupCollection.cs" />
-    <EmbeddedResource Include="Forms and Program\Not Used\DialogBoxForm.resx">
-      <DependentUpon>DialogBoxForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms and Program\DemonstrationForm.resx">
       <DependentUpon>DemonstrationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms and Program\Not Used\OptionsForm.resx">
-      <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms and Program\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms and Program\ProfileSectionControl.resx">
-      <DependentUpon>ProfileSectionControl.cs</DependentUpon>
+    <EmbeddedResource Include="Forms and Program\SettingsGroupSectionControl.resx">
+      <DependentUpon>SettingsGroupSectionControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,6 +146,8 @@
     <None Include="Resources\Save_16x.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Dot Dot Dot.png" />
+    <Content Include="Resources\EiffelTower-Ultimaker Cura 2.png" />
     <Content Include="Settngs\Concrete SettingsGroups\Notes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,6 +14,10 @@ namespace CuraProfileDemonstration
 	/// </summary>
 	public enum ProfileSectionEnum
 	{
+		/// <summary>Cooling.</summary>
+		[Description("Cooling")]
+		Cooling,
+
 		/// <summary>Material 1.</summary>
 		[Description("Material 1")]
 		Material1,
@@ -21,6 +25,18 @@ namespace CuraProfileDemonstration
 		/// <summary>Material 2.</summary>
 		[Description("Material 2")]
 		Material2,
+
+		/// <summary>Support.</summary>
+		[Description("Support")]
+		Support,
+
+		/// <summary>Walls 1.</summary>
+		[Description("Walls 1")]
+		Walls1,
+
+		/// <summary>Walls 2.</summary>
+		[Description("Walls 2")]
+		Walls2,
 
 		/// <summary>The number of types/items in the enumeration.</summary>
 		[Description("Length")]

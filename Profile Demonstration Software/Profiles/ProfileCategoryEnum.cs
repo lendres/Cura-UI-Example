@@ -22,9 +22,13 @@ namespace CuraProfileDemonstration
 		[Description("Material")]
 		Material,
 
-		/// <summary>Material.</summary>
+		/// <summary>Support.</summary>
 		[Description("Support")]
 		Support,
+
+		/// <summary>Walls.</summary>
+		[Description("Walls")]
+		Walls,
 
 		/// <summary>The number of types/items in the enumeration.</summary>
 		[Description("Length")]

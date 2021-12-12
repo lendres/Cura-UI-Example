@@ -1,8 +1,7 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Xml.Serialization;
 using DigitalProduction.XML.Serialization;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Serialization;
 
 namespace CuraProfileDemonstration
 {
@@ -14,6 +13,7 @@ namespace CuraProfileDemonstration
 	[XmlInclude(typeof(Cooling))]
 	[XmlInclude(typeof(Material))]
 	[XmlInclude(typeof(Support))]
+	[XmlInclude(typeof(Walls))]
 	public abstract class SettingsGroup : Serializable
 	{
 		#region Members
@@ -42,16 +42,6 @@ namespace CuraProfileDemonstration
 		#endregion
 
 		#region Properties
-
-		/// <summary>
-		/// Dictionary that contains the properties.
-		/// </summary>
-		//[XmlArray("properties"), XmlArrayItem("property")]
-		//public SerializableDictionary<string, Setting> Properties
-		//{
-		//	get => _properties;
-		//	set => _properties = value;
-		//}
 
 		/// <summary>
 		/// Dictionary that contains the properties.

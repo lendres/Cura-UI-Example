@@ -63,6 +63,16 @@ namespace CuraProfileDemonstration.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Dot_Dot_Dot {
+            get {
+                object obj = ResourceManager.GetObject("Dot Dot Dot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EiffelTower_Ultimaker_Cura {
             get {
                 object obj = ResourceManager.GetObject("EiffelTower-Ultimaker Cura", resourceCulture);

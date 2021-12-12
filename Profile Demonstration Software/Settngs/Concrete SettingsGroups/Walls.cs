@@ -1,13 +1,13 @@
 ﻿namespace CuraProfileDemonstration
 {
 	/// <summary>
-	/// Specifis for the material SettingsGroup.
+	/// Specifics for the walls SettingsGroup.
 	/// </summary>
-	public class Material : SettingsGroup
+	public class Walls : SettingsGroup
 	{
 		#region Members
 
-		public static string		FileExtension		= ".material";
+		public static string		FileExtension		= ".walls";
 
 		#endregion
 
@@ -18,7 +18,7 @@
 		/// 
 		/// Required for serializationi.
 		/// </summary>
-		public Material()
+		public Walls()
 		{
 		}
 
@@ -27,19 +27,19 @@
 		/// 
 		/// Create some settings with default values.
 		/// </summary>
-		public Material(string name, double temerature, double coolDownModifier, double flowRate)
+		public Walls(string name, double wallThickness, bool outerBeforeInner, string zSeam)
 		{
 			this.Name = name;
 
-			Add(new Setting("Temperature", temerature));
-			Add(new Setting("Cool Down Modifier", coolDownModifier));
-			Add(new Setting("Flow Rate", flowRate));
+			Add(new Setting("Wall Thickness", wallThickness));
+			Add(new Setting("Outer Before Inner", outerBeforeInner));
+			Add(new Setting("Z Seam", zSeam));
 		}
 
 		/// <summary>
 		/// Copy constructor.
 		/// </summary>
-		public Material(Material original) :
+		public Walls(Walls original) :
 			base(original)
 		{
 		}
@@ -53,7 +53,7 @@
 		/// </summary>
 		public override string GetFileExtension()
 		{
-			return Material.FileExtension;
+			return Walls.FileExtension;
 		}
 
 		#endregion
@@ -65,7 +65,7 @@
 		/// </summary>
 		public override SettingsGroup Copy()
 		{
-			return new Material(this);
+			return new Walls(this);
 		}
 
 		#endregion

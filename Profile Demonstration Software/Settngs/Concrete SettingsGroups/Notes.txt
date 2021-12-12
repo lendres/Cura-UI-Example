@@ -1,7 +1,7 @@
 ﻿To add a new Concrete SettingsGroup:
 
-1. Create class derived SettingsGroup.
+1. Create class derived from SettingsGroup.
 2. Add new entry to ProfileCategoryEnum.
 3. Add line [XmlInclude(typeof())] line to the top of the SettingsGroup class.
 4. Add line to ProgramManager.ReadLibraries();
-5. Add lines to ProgramManager.CreateInitialLibrary()();
+5. Add lines to ProgramManager.CreateInitialLibrary();
