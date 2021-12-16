@@ -174,7 +174,7 @@ namespace CuraProfileDemonstration
 			settingsGroupCollection.Serialize(_libraryPath);
 
 			// Create some Profiles.
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 4; i++)
 			{
 				Profile profile = new Profile("Profile " + (i+1).ToString());
 				profile.Initialize(ProfileSectionEnum.Cooling, cooling);
